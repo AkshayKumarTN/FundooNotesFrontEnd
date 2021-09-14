@@ -8,11 +8,18 @@
  }
 
 .card{ 
-  width: 450px;
+  width: 600px;
     margin-left: auto;
     margin-right: auto;
     flex: auto;
 }
+.title
+{
+    padding-left: 10px;
+    font-size: 27px;    
+    font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif;
+}
+
 .matcardtitle {
   color: #202124;
     padding-bottom: 40px;
@@ -23,6 +30,31 @@
     line-height: 1.3333;
     margin-bottom: 0;
     margin-top: 0;
+}
+
+.form-img
+{
+  display: flex;
+  flex-direction: row ;
+}
+
+.formImage
+{    
+  margin: 72px 4px 0;
+  text-align: center;
+}
+.j9NuTc {
+    max-width: 100%;
+}
+.oEvHdd {
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.Registerform
+{
+  flex: auto;
+  flex-direction: column;
 }
 
 .input-text
