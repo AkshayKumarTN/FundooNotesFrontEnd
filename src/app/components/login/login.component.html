@@ -2,7 +2,7 @@
     <mat-card class="card">
             <div>
                 <div class="divContainer">
-                    <form class="formContainer">
+                    <form class="formContainer" [formGroup]="LoginForm">
                         <div >
                             <h4 class="title">
                                 <span style="color:#4285F4">F</span>
@@ -18,17 +18,19 @@
                         <div class="userName">
                             <mat-form-field appearance="outline">
                                 <mat-label>Email or Phone</mat-label>
-                                <input matInput>
+                                <input formControlName="Email" matInput>
+                                <mat-error >{{ getEmailInvalidMessage()}} </mat-error>
                             </mat-form-field>
                         </div>
                         <div class="password">
                             <mat-form-field appearance="outline">
                                 <mat-label>Password</mat-label>
-                                <input matInput>
+                                <input formControlName="Password" [type]='hide?"text":"password"' matInput>
+                                <mat-error>{{getPasswordInvalidMessage()}} </mat-error>
                             </mat-form-field>
                         </div>
                         <div class="show-password">
-                            <div><mat-checkbox>Show Password</mat-checkbox></div>
+                            <div><mat-checkbox (click)="hide=!hide">Show Password</mat-checkbox></div>
                             <div><a mat-flat-button class="Signin" href="https://www.google.com/" target="_blank">Forgot Password ?</a></div>
                             
                         </div>
