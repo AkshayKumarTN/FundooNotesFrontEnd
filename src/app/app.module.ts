@@ -11,7 +11,10 @@ import {  MatCardModule} from '@angular/material/card';
 import {  MatToolbarModule} from '@angular/material/toolbar';
 import {  MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule} from '@angular/material/input'
-import { MatCheckboxModule} from '@angular/material/checkbox'
+import { MatCheckboxModule} from '@angular/material/checkbox';
+import { LoginComponent } from './components/login/login.component'
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -19,12 +22,14 @@ import { MatCheckboxModule} from '@angular/material/checkbox'
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule, ReactiveFormsModule,
     MatButtonModule,
     MatCardModule,
     MatToolbarModule,
