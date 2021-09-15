@@ -48,7 +48,7 @@ export class RegisterComponent implements OnInit {
   }
   getEmailInvalidMessage() {
     return this.RegisterForm.get("Email")?.hasError('required') ? 'You must enter a value' :
-    this.RegisterForm.get("Email")?.hasError('email') ? 'Not a valid email' : '';
+    this.RegisterForm.get("Email")?.hasError('pattern') ? 'Not a valid email' : '';
   }
   getPasswordInvalidMessage() {
     if (this.RegisterForm.get("Password")?.hasError("required")) {
