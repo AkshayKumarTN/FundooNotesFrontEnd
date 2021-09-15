@@ -1,23 +1,29 @@
 .container{
-  position: fixed;
-  top: 50%;
-  left: 50%; 
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%); 
-  width:100%;
+  display: flex;   
+  justify-content: center;
+  flex-flow:row;
+  margin-top: 10px;
  }
 
 .card{ 
-  width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    flex: auto;
+   width: 50%;
+    display: flex;
+    justify-content: center;
+    flex-flow:row;
+    margin-top: 30px;
+}
+
+.form-img
+{
+  display: flex;
+  flex-direction: row ;
 }
 .title
 {
     padding-left: 10px;
     font-size: 27px;    
     font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif;
+    margin-left: 10px;
 }
 
 .matcardtitle {
@@ -30,63 +36,38 @@
     line-height: 1.3333;
     margin-bottom: 0;
     margin-top: 0;
+    margin-left: 10px;
 }
-
-.form-img
+.divContainer
 {
-  display: flex;
-  flex-direction: row ;
+    padding:10px;
 }
-
-.formImage
-{    
-  margin: 72px 4px 0;
-  text-align: center;
-}
-.j9NuTc {
-    max-width: 100%;
-}
-.oEvHdd {
-  font-size: 16px;
-  font-weight: 300;
-}
-
-.Registerform
+.name
 {
-  flex: auto;
-  flex-direction: column;
-}
-
-.input-text
+    display: flex;
+    flex-direction: row;
+div
 {
-  flex: auto;
-  flex-wrap: wrap;
-
+    margin-right:13px;
 }
-mat-form-field
+}
+.mat-form-field 
 {
-  padding-left: 2%;
+   width: 95%;
 }
-
-body, input,textarea, select, button {
-  color: #202124;
-  font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif;
-}
-
-button
+.password
 {
-  background-color: #1a73e8;
-  color: #fff;
+    @extend .name;
+}
+.show-password
+{
+  margin-left: 10px;
+  margin-top: 10px;
 }
 
-.Signin
-{
-  font-family: "Google Sans",Roboto,Arial,sans-serif;
-  color: #1a73e8;
-  letter-spacing: .0107142857em;
-  font-weight: 500;
-  font-size: .875rem;
-}
+
+
+
 
 .button-signin
 {
@@ -99,3 +80,35 @@ button
   min-height: 38px;
   padding-bottom: 20px;
 }
+
+.Signin
+{
+  font-family: "Google Sans",Roboto,Arial,sans-serif;
+  color: #1a73e8;
+  letter-spacing: .0107142857em;
+  font-weight: 500;
+  font-size: .875rem;
+}
+
+
+.formImage
+{    
+  margin: 72px 4px 0;
+  text-align: center;
+}
+
+
+.j9NuTc {
+    max-width: 100%;
+}
+.oEvHdd {
+  font-size: 16px;
+  font-weight: 300;
+}
+
+button
+{
+  background-color: #1a73e8;
+  color: #fff;
+}
+

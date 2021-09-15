@@ -11,6 +11,7 @@ import {  MatCardModule} from '@angular/material/card';
 import {  MatToolbarModule} from '@angular/material/toolbar';
 import {  MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule} from '@angular/material/input'
+import { MatCheckboxModule} from '@angular/material/checkbox'
 
 
 
@@ -28,7 +29,8 @@ import { MatInputModule} from '@angular/material/input'
     MatCardModule,
     MatToolbarModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
