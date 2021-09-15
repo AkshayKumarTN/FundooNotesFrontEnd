@@ -6,7 +6,6 @@
  }
 
 .card{ 
-   width: 50%;
     display: flex;
     justify-content: center;
     flex-flow:row;
@@ -20,23 +19,16 @@
 }
 .title
 {
-    padding-left: 10px;
-    font-size: 27px;    
+    font-size: 20px;    
     font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif;
-    margin-left: 10px;
 }
 
 .matcardtitle {
   color: #202124;
-    padding-bottom: 40px;
-    padding-top: 16px;
+    padding-bottom: 10px;
+    padding-top: 5px;
     font-family: 'Google Sans','Noto Sans Myanmar UI',arial,sans-serif;
-    font-size: 21px;
-    font-weight: 400;
-    line-height: 1.3333;
-    margin-bottom: 0;
-    margin-top: 0;
-    margin-left: 10px;
+    font-size: 24px;
 }
 .divContainer
 {
@@ -66,9 +58,6 @@ div
 }
 
 
-
-
-
 .button-signin
 {
   display: flex;
@@ -93,22 +82,42 @@ div
 
 .formImage
 {    
-  margin: 72px 4px 0;
+  display:flex;
+  flex-flow: column;
   text-align: center;
+  justify-content: center;
 }
 
-
-.j9NuTc {
-    max-width: 100%;
-}
-.oEvHdd {
-  font-size: 16px;
-  font-weight: 300;
-}
 
 button
 {
   background-color: #1a73e8;
   color: #fff;
 }
+
+@media screen and (max-width: 900px) {
+  .formImage {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 476px)
+  {
+      .name
+      {
+       display: flex;
+       flex-direction: row;
+       flex-wrap: wrap;
+      }
+      .mat-form-field
+      {
+          width: 100%;
+      }
+      .button-signin
+      {
+          display: flex;
+          justify-content: space-between;
+      }
+  }
+
 
