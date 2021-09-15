@@ -69,7 +69,7 @@ export class RegisterComponent implements OnInit {
     else if (this.RegisterForm.get("ConfirmPassword")?.hasError("pattern")) {
       return "Password did not match";
     }
-    else if (this.RegisterForm.get("ConfirmPassword") != this.RegisterForm.get("Password"))
+    else if (this.RegisterForm.get("ConfirmPassword")?.value != this.RegisterForm.get("Password")?.value)
     {
       return "Password did not match";
     }
