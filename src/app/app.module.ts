@@ -16,7 +16,8 @@ import { LoginComponent } from './components/login/login.component'
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 
@@ -39,6 +40,7 @@ import { HttpClientModule } from '@angular/common/http'
     MatFormFieldModule,
     MatInputModule,
     HttpClientModule,
+    MatSnackBarModule,
     MatCheckboxModule
   ],
   providers: [],

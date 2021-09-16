@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {UserServiceService} from 'src/app/Services/UserService/user-service.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class RegisterComponent implements OnInit {
   isVisible = true;
 
   constructor(
-    private userService : UserServiceService
+    private userService : UserServiceService,
+    private snackBar: MatSnackBar
   ) { }
 
 
@@ -67,8 +69,17 @@ export class RegisterComponent implements OnInit {
 
   Register()
   {
-    this.userService.Register(this.RegisterForm.value).subscribe((status:any) => {
-      console.log(status);
+    this.userService.Register(this.RegisterForm.value).subscribe((result:any) => {
+      console.log(result);
+      if(result.status == true)
+        {
+
+        }
+        this.snackBar.open(`${result.message}`, '', {
+          duration: 4000,
+          verticalPosition: 'bottom',
+          horizontalPosition: 'left'
+        });
     });
     
   }
