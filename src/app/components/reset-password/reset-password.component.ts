@@ -9,7 +9,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class ResetPasswordComponent implements OnInit {
 
   ResetPasswordForm!: FormGroup;
-  hide = false;
+  hide1 = true;
+  hide2 = true;
 
   constructor() { }
 

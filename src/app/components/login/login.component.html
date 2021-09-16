@@ -25,12 +25,12 @@
                         <div class="password">
                             <mat-form-field appearance="outline">
                                 <mat-label>Password</mat-label>
-                                <input formControlName="Password" [type]='hide?"text":"password"' matInput>
+                                <input formControlName="Password" [type]="hide ? 'password' : 'text'" matInput>
+                                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                                 <mat-error>{{getPasswordInvalidMessage()}} </mat-error>
                             </mat-form-field>
                         </div>
                         <div class="show-password">
-                            <div><mat-checkbox (click)="hide=!hide">Show Password</mat-checkbox></div>
                             <div><a mat-flat-button class="Signin"[routerLink]="['/forgotPassword']">Forgot Password ?</a></div>
                             
                         </div>

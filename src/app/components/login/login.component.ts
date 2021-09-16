@@ -10,7 +10,8 @@ export class LoginComponent implements OnInit {
 
   LoginForm!: FormGroup;
   submitted = false;
-  hide = false;
+  hide = true;
+  
 
   constructor() { }
 
@@ -22,6 +23,8 @@ export class LoginComponent implements OnInit {
       }
     )
   }
+  
+
 
   getEmailInvalidMessage() {
     return this.LoginForm.get("Email")?.hasError('required') ? 'You must enter a value' :

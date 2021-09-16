@@ -19,6 +19,7 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { HttpClientModule } from '@angular/common/http';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { MatIconModule } from "@angular/material/icon";
 
 
 
@@ -43,6 +44,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
     MatInputModule,
     HttpClientModule,
     MatSnackBarModule,
+    MatIconModule,
     MatCheckboxModule
   ],
   providers: [],

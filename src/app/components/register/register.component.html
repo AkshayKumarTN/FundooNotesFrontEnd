@@ -44,14 +44,16 @@
                             <div>
                             <mat-form-field appearance="outline">
                                 <mat-label>Password</mat-label>
-                                <input formControlName="Password" [type]='hide?"text":"password"' matInput>
+                                <input formControlName="Password" [type]="hide1 ? 'password' : 'text'" matInput>
+                                <mat-icon matSuffix (click)="hide1 = !hide1">{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
                                 <mat-error>{{getPasswordInvalidMessage()}} </mat-error>
                             </mat-form-field>
                             </div>
                             <div>
                             <mat-form-field appearance="outline">
                                 <mat-label>Confirm</mat-label>
-                                <input formControlName="ConfirmPassword" [type]='hide?"text":"password"' pattern="{{ this.RegisterForm.value.Password}}"matInput>
+                                <input formControlName="ConfirmPassword" [type]="hide2 ? 'password' : 'text'" pattern="{{ this.RegisterForm.value.Password}}"matInput>
+                                <mat-icon matSuffix (click)="hide2 = !hide2">{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
                                 <mat-error *ngIf="RegisterForm.controls['ConfirmPassword'].invalid">Password doesn't match</mat-error>
                             </mat-form-field>
                             </div>
@@ -59,10 +61,7 @@
                         <div>
                             <mat-hint>Use 8 or more characters with a mix of letters, numbers & symbols
                             </mat-hint>
-                        </div>
-                        <div class="show-password">
-                            <mat-checkbox (click)="hide=!hide">Show Password</mat-checkbox>
-                        </div>
+                        </div>                        
                         <div class = "button-signin">
                             <a mat-flat-button [routerLink]="['/login']" class="Signin">Sign in instead</a>
                             <button mat-raised-button (click)="Register()">Register</button>

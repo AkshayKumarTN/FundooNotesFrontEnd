@@ -13,7 +13,8 @@ export class RegisterComponent implements OnInit {
   
   RegisterForm!: FormGroup;
   submitted = false;
-  hide = false;
+  hide1 = true;
+  hide2 = true;
   isVisible = true;
 
   constructor(
