@@ -51,8 +51,8 @@
                             <div>
                             <mat-form-field appearance="outline">
                                 <mat-label>Confirm</mat-label>
-                                <input formControlName="ConfirmPassword" [type]='hide?"text":"password"' matInput>
-                                <mat-error>{{ConfirmPasswordInvalidMessage()}} </mat-error>
+                                <input formControlName="ConfirmPassword" [type]='hide?"text":"password"' pattern="{{ this.RegisterForm.value.Password}}"matInput>
+                                <mat-error *ngIf="RegisterForm.controls['ConfirmPassword'].invalid">Password doesn't match</mat-error>
                             </mat-form-field>
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                         </div>
                         <div class = "button-signin">
                             <a mat-flat-button [routerLink]="['/login']" class="Signin">Sign in instead</a>
-                            <button mat-raised-button>Register</button>
+                            <button mat-raised-button (click)="Register()">Register</button>
                         </div>
                     </form>
                 </div>

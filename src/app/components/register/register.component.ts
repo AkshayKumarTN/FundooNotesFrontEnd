@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {UserServiceService} from 'src/app/Services/UserService/user-service.service';
+
 
 @Component({
   selector: 'app-register',
@@ -11,8 +13,11 @@ export class RegisterComponent implements OnInit {
   RegisterForm!: FormGroup;
   submitted = false;
   hide = false;
+  isVisible = true;
 
-  constructor() { }
+  constructor(
+    private userService : UserServiceService
+  ) { }
 
 
   ngOnInit(): void {
@@ -22,7 +27,7 @@ export class RegisterComponent implements OnInit {
         LastName : new FormControl('',[Validators.required, Validators.pattern('^[A-Z]{1}[a-z]{2,}$'),Validators.minLength(3)]),
         Email : new FormControl('',[Validators.required, Validators.pattern('^([a-z]){1,}[a-z0-9]*([.+_-]){0,1}[0-9a-z]+(@){1}([0-9a-z]+)(\\.([a-z]){2,}){1}(\\.[a-z]{2,})?$'),Validators.minLength(6)]),
         Password : new FormControl('',[Validators.required, Validators.pattern('^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\\W)(?!.*\\W\\w*\\W)(?!.*\\s).{8,}$'),Validators.minLength(8)]),
-        ConfirmPassword : new FormControl('',[Validators.required, Validators.pattern('^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\\W)(?!.*\\W\\w*\\W)(?!.*\\s).{8,}$'),Validators.minLength(8)]),
+        ConfirmPassword : new FormControl('',[Validators.required]),
 
       }
     )
@@ -59,21 +64,13 @@ export class RegisterComponent implements OnInit {
     }
     return null;  
   }
-  ConfirmPasswordInvalidMessage() {
-    if (this.RegisterForm.get("ConfirmPassword")?.hasError("required")) {
-      return "Password is required";
-    }
-    else if (this.RegisterForm.get("ConfirmPassword")?.hasError("minlength")) {
-      return "Password must be 8 characters";
-    }
-    else if (this.RegisterForm.get("ConfirmPassword")?.hasError("pattern")) {
-      return "Password did not match";
-    }
-    else if (this.RegisterForm.get("ConfirmPassword")?.value != this.RegisterForm.get("Password")?.value)
-    {
-      return "Password did not match";
-    }
-    return null;
+
+  Register()
+  {
+    this.userService.Register(this.RegisterForm.value).subscribe((status:any) => {
+      console.log(status);
+    });
+    
   }
 
 }
