@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {UserServiceService} from 'src/app/Services/UserService/user-service.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +15,10 @@ export class LoginComponent implements OnInit {
   hide = true;
   
 
-  constructor() { }
+  constructor(
+    private userService : UserServiceService,
+    private snackBar: MatSnackBar
+  ) { }
 
   ngOnInit(): void {
     this.LoginForm = new FormGroup(
@@ -38,6 +43,22 @@ export class LoginComponent implements OnInit {
       return "Password must be 8 characters";
     }
     return null;  
+  }
+
+  Login()
+  {
+    this.userService.Login(this.LoginForm.value).subscribe((result:any) => {
+      console.log(result);
+      if(result.status == true)
+        {
+
+        }
+        this.snackBar.open(`${result.message}`, '', {
+          duration: 4000,
+          verticalPosition: 'bottom',
+          horizontalPosition: 'left'
+        });
+    });
   }
 
 }

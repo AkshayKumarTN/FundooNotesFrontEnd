@@ -30,5 +30,12 @@ export class UserServiceService {
     }
     return this.httpService.put(`${environment.baseUrl}/api/User/ResetPassword`, params,false);
   }
+  Login(data:any){
+    const params = {
+      Email : data.Email,
+      Password : data.Password
+    }
+    return this.httpService.post(`${environment.baseUrl}/api/User/Login`, params,false);
+  }
 
 }
