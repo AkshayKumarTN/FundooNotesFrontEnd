@@ -18,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { HttpClientModule } from '@angular/common/http';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 
 
@@ -27,7 +28,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
