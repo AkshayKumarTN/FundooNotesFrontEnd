@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {UserServiceService} from 'src/app/Services/UserService/user-service.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-reset-password',
@@ -12,7 +14,10 @@ export class ResetPasswordComponent implements OnInit {
   hide1 = true;
   hide2 = true;
 
-  constructor() { }
+  constructor(
+    private userService : UserServiceService,
+    private snackBar: MatSnackBar
+  ) { }
 
   ngOnInit(): void {
     this.ResetPasswordForm = new FormGroup(
@@ -36,6 +41,23 @@ export class ResetPasswordComponent implements OnInit {
       return "Password must be 8 characters";
     }
     return null;  
+  }
+
+  UpdatePassword()
+  {
+    this.userService.UpdatePassword(this.ResetPasswordForm.value).subscribe((result:any) => {
+      console.log(result);
+      if(result.status == true)
+        {
+
+        }
+        this.snackBar.open(`${result.message}`, '', {
+          duration: 4000,
+          verticalPosition: 'bottom',
+          horizontalPosition: 'left'
+        });
+    });
+    
   }
 
 }

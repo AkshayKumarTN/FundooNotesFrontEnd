@@ -22,4 +22,13 @@ export class UserServiceService {
     return this.httpService.post(`${environment.baseUrl}/api/User/Register`, params,false);
   }
 
+  UpdatePassword(data:any){
+    const params = {
+      Email : data.Email,
+      NewPassword : data.Password,
+      ConfirmNewPassword : data.ConfirmPassword
+    }
+    return this.httpService.put(`${environment.baseUrl}/api/User/ResetPassword`, params,false);
+  }
+
 }
