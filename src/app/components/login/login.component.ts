@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
             verticalPosition: 'bottom',
             horizontalPosition: 'left'
           });
-          this.router.navigateByUrl('/register');
+          this.router.navigateByUrl('/dashboard');
         }
     },(error: HttpErrorResponse) => {
       console.log(error.error.message);

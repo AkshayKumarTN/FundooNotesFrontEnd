@@ -20,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { MatIconModule } from "@angular/material/icon";
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 
@@ -30,7 +31,8 @@ import { MatIconModule } from "@angular/material/icon";
     RegisterComponent,
     LoginComponent,
     ResetPasswordComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
