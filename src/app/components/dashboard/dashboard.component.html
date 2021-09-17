@@ -1,1 +1,99 @@
-<p>dashboard works!</p>
+<div class="example-container"  >
+    <mat-toolbar class="example-toolbar">
+        <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+            <button class="menuBtn" mat-icon-button >
+                <mat-icon>menu</mat-icon>
+            </button>
+            <div routerLink='/home'  fxLayout="row" fxLayoutAlign="center center">
+                <img class="logo" src="assets/keep-img.png" alt="Fundoo note logo">
+                <h4 class="title">
+                    <span style="color:#4285F4">F</span>
+                    <span style="color:#DB4437">u</span>
+                    <span style="color: #F4B400">n</span>
+                    <span style="color: #4285F4">d</span>
+                    <span style="color:#0F9D58">o</span>
+                    <span style="color:#DB4437">o</span>
+                </h4>            
+            </div>
+        </div>
+        <div class="center searchBar " fxHide.lt-md fxFlex=40 fxLayout="row" fxLayoutAlign="start center">
+            <div class="container" fxLayoutAlign="center center">
+                <button class="button" >
+                    <mat-icon>search</mat-icon>
+                </button>
+            </div>
+            <input type="text" placeholder="Search" style="background-color: transparent">
+        </div>
+      <!-- profile picture -->
+      <div class="profile" fxFlex=100 fxLayout="row" fxLayoutAlign="end center">
+            <div matTooltip="Search" fxHide.gt-sm fxShow.lt-sm class="container" fxLayoutAlign="center center">
+                <button class="button" >
+                    <mat-icon>search</mat-icon>
+                </button>
+            </div>
+            <div matTooltip="Refresh" class="container" fxLayoutAlign="center center">
+                <button class="button" style="padding-right: 10px;">
+                    <img src="/assets/refresh.svg">
+                </button>
+            </div>
+            <div matTooltip=" List View" fxHide.xs class="container" fxLayoutAlign="center center">
+                <button class="button" style="padding-right: 10px;">
+                    <img src="/assets/list.svg">
+                </button>
+            </div>
+            <div matTooltip="Settings" class="container" fxLayoutAlign="center center">
+                <button class="button button-Settings-logo" >
+                    <img src="/assets/settings.svg">
+                </button>
+            </div>
+            <div matTooltip=" List View"  class="container" fxLayoutAlign="center center">
+                <button class="button" style="padding-right: 10px;">
+                    <mat-icon>view_comfy</mat-icon>
+                </button>
+            </div>
+            <!-- Log Out Icon -->
+            <div fxLayout="row"  ngClass="log-out-icon">
+                <button  mat-icon-button  >
+                    <img mat-card-avatar src="assets/emplpyee.png" class="img2" sizes="2px">
+                </button>
+            </div>
+        </div>
+    </mat-toolbar>
+  
+    <mat-sidenav-container class="example-sidenav-container" >
+        <mat-sidenav opened="true" mode="side">
+            <mat-nav-list >
+                <div class="navlist active" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" mat-list-item >
+                    <button class="navBtn btnPosition" mat-icon-button>
+                        <img src="/assets/lightbulb.svg">
+                    </button>
+                    <p class="navName  " >Notes</p>
+                </div>
+                <div class="navlist" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" mat-list-item>
+                    <button class="navBtn btnPosition" mat-icon-button >
+                        <img src="/assets/download.svg">
+                    </button>
+                    <p class="navName " >Reminder</p>
+                </div>
+                <div class="navlist" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" mat-list-item >
+                    <button class="navBtn btnPosition" mat-icon-button >
+                        <img src="/assets/label.svg">
+                    </button>
+                    <p class="navName " >Edit Labels</p>
+                </div>
+                <div class="navlist" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" mat-list-item >
+                    <button class="navBtn btnPosition" mat-icon-button >
+                        <img src="/assets/archive.svg">
+                    </button>
+                    <p class="navName " >Archive</p>
+                </div>
+                <div class="navlist" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" mat-list-item>
+                    <button class="navBtn btnPosition" mat-icon-button >
+                        <img src="/assets/delete.svg">
+                    </button>
+                    <p class="navName">Trash</p>
+                </div>
+            </mat-nav-list>
+        </mat-sidenav>
+    </mat-sidenav-container>
+  </div>

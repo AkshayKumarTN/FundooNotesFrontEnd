@@ -44,6 +44,7 @@ import {MatTreeModule} from '@angular/material/tree';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LayoutModule } from '@angular/cdk/layout';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
@@ -94,7 +95,8 @@ import { LayoutModule } from '@angular/cdk/layout';
     ScrollingModule,
     HttpClientModule,
     FormsModule, ReactiveFormsModule,
-    LayoutModule
+    LayoutModule,
+    FlexLayoutModule
   ]
 })
 export class MaterialModule { }

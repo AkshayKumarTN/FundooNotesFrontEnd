@@ -1,0 +1,166 @@
+.example-container {
+    display       : flex;
+    flex-direction: column;
+    position : absolute;
+    top : 0;
+    bottom : 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .example-is-mobile .example-toolbar {
+    position: fixed;
+    z-index : 2;
+  
+  }
+  .example-toolbar{
+    background-color: white;
+    border: 1px solid rgba(153, 147, 147, 0.5);
+  }
+  
+  .logo {
+    width : 45px;
+    height: 50px;
+    cursor: pointer;
+  }
+  .title
+  {
+      font-size: 20px;    
+      font-family: roboto,'Noto Sans Myanmar UI',arial,sans-serif; 
+      display: flex;
+      justify-content: center;
+  }
+  
+  
+  .example-app-name {
+    padding-top: 20px;
+    margin-left: 10px;
+    cursor     : pointer;
+  }
+  
+  .example-sidenav-container {
+    flex: 1;
+    background-color: white;
+    
+   
+    
+  }
+  
+  .example-is-mobile .example-sidenav-container {
+    flex: 1 0 auto;    
+  }
+  
+  
+  
+  .btnPosition {
+    margin-left: 15px;
+    opacity: 0.6;  
+  }
+
+  .button{
+    opacity: 0.6;
+  }
+  
+  .navName {
+    font-size : 16px;
+    cursor : pointer;
+    width : 220px;
+    transform : 300ms ease-in-out;
+    padding-top: 15px;
+  }
+  
+  .navlist:hover {
+    background-color: #feefc3;
+    border-radius : 0 20px 20px 0;
+  }
+  
+  .menuBtn,
+  .navBtn {
+    transform: all 3s ease;
+  }
+  
+  .menuBtn:hover {
+    background-color: rgba(153, 147, 147, 0.5);
+  }
+  
+  .mat-sidenav-content {
+    padding: 2.5%;   
+  }
+  
+  .center {
+    margin: auto 3%; 
+   
+  }
+  
+  .searchBar {
+    height : 45px;
+    border : 0.05px solid rgb(211, 205, 205);
+    border-radius : 8px;
+    padding-left : 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 15px;
+    margin-left: 150px;
+    background-color: transparent;
+    background-color: #ebebeb;
+  }
+    
+  .profile{
+    padding-right:20px;
+  }
+  
+  input {
+    width : 100%;
+    height : 100%;
+    border : none;
+    padding : 2%;
+    outline : none;
+    border-radius : 8px;
+    background-color: #F1F3F4;
+  }
+  
+  .button {
+    width : 40px;
+    height : 40px;
+    border-radius : 50%;
+    cursor : pointer;
+    border : none;
+    background-color: transparent;    
+  }
+  
+  .button:hover,
+  .image:hover {
+    background-color: rgba(153, 147, 147, 0.5);
+  }
+
+  .button-Settings-logo{
+    margin-right: 40px; 
+  }
+  
+  .image {
+    
+    background-size : cover;
+    cursor : pointer;
+  }
+
+
+  @media only screen and (max-width: 599px) {
+  
+    .logo {
+      width : 28px;
+      height: 28px;
+      cursor: pointer;
+    }
+
+    .button-Settings-logo{
+        margin-right: 10px;
+    }
+  
+  }
+  @media only screen and (max-width: 699px) {
+  
+    .button-Settings-logo{
+        margin-right: 25px;
+    }
+  
+  }
