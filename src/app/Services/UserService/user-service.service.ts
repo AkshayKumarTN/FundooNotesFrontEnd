@@ -37,5 +37,11 @@ export class UserServiceService {
     }
     return this.httpService.post(`${environment.baseUrl}/api/User/Login`, params);
   }
+  Next(data:any){
+    const params = {
+      Email : data.Email
+    }
+    return this.httpService.post(`${environment.baseUrl}/api/User/ForgotPassword?Email=${data.Email}`);
+  }
 
 }
