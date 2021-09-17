@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {UserServiceService} from 'src/app/Services/UserService/user-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-reset-password',
@@ -16,6 +18,7 @@ export class ResetPasswordComponent implements OnInit {
 
   constructor(
     private userService : UserServiceService,
+    private router: Router,
     private snackBar: MatSnackBar
   ) { }
 
@@ -46,16 +49,29 @@ export class ResetPasswordComponent implements OnInit {
   UpdatePassword()
   {
     this.userService.UpdatePassword(this.ResetPasswordForm.value).subscribe((result:any) => {
-      console.log(result);
+      console.log(result);      
+      
       if(result.status == true)
         {
-
+          this.snackBar.open(`${result.message}`, '', {
+            duration: 4000,
+            verticalPosition: 'bottom',
+            horizontalPosition: 'left'
+          });
+          this.router.navigateByUrl('/login');
         }
-        this.snackBar.open(`${result.message}`, '', {
-          duration: 4000,
-          verticalPosition: 'bottom',
-          horizontalPosition: 'left'
-        });
+        
+    },(error: HttpErrorResponse) => {
+      console.log(error.error.message);
+      this.snackBar.open(`${error.error.message}`, '', {
+        duration: 4000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'left'
+      });
+      if(error.error.message == "Password Reset Unsuccessfull!. Invalid Email!")
+      {
+        this.router.navigateByUrl('/login');
+      }
     });
     
   }
