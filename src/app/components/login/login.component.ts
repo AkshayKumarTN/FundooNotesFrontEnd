@@ -60,6 +60,15 @@ export class LoginComponent implements OnInit {
             verticalPosition: 'bottom',
             horizontalPosition: 'left'
           });
+        var params={
+          key:result.userData.userId,
+          FirstName:result.userData.firstName,
+          LastName:result.userData.lastName,
+          Email:result.userData.email,
+          Token:result.data
+        }        
+        localStorage.setItem('FundooNotes',JSON.stringify(params));
+
           this.router.navigateByUrl('/dashboard');
         }
     },(error: HttpErrorResponse) => {
