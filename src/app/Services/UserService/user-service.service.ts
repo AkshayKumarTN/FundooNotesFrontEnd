@@ -19,7 +19,7 @@ export class UserServiceService {
       Email : data.Email,
       Password : data.Password
     }
-    return this.httpService.post(`${environment.baseUrl}/api/User/Register`, params,false);
+    return this.httpService.post(`${environment.baseUrl}/api/User/Register`, params);
   }
 
   UpdatePassword(data:any){
@@ -28,14 +28,14 @@ export class UserServiceService {
       NewPassword : data.Password,
       ConfirmNewPassword : data.ConfirmPassword
     }
-    return this.httpService.put(`${environment.baseUrl}/api/User/ResetPassword`, params,false);
+    return this.httpService.put(`${environment.baseUrl}/api/User/ResetPassword`, params);
   }
   Login(data:any){
     const params = {
       Email : data.Email,
       Password : data.Password
     }
-    return this.httpService.post(`${environment.baseUrl}/api/User/Login`, params,false);
+    return this.httpService.post(`${environment.baseUrl}/api/User/Login`, params);
   }
 
 }

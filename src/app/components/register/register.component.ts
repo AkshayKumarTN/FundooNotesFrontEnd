@@ -72,15 +72,16 @@ export class RegisterComponent implements OnInit {
   {
     this.userService.Register(this.RegisterForm.value).subscribe((result:any) => {
       console.log(result);
+      this.snackBar.open(`${result.message}`, '', {
+        duration: 4000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'left'
+      });
       if(result.status == true)
         {
-
+          // navigator to login
         }
-        this.snackBar.open(`${result.message}`, '', {
-          duration: 4000,
-          verticalPosition: 'bottom',
-          horizontalPosition: 'left'
-        });
+        
     });
     
   }
