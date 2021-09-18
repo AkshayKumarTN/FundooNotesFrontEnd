@@ -40,14 +40,17 @@
   
   .example-sidenav-container {
     flex: 1;
-    background-color: white;
-    
-   
     
   }
   
   .example-is-mobile .example-sidenav-container {
     flex: 1 0 auto;    
+    
+  }
+  .SideBar-Sidenav
+  {
+    border: 1px solid white !important;
+
   }
   
   

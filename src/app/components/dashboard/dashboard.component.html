@@ -1,5 +1,5 @@
 <div class="example-container"  >
-    <mat-toolbar class="example-toolbar">
+    <mat-toolbar class="example-toolbar ">
         <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
             <button class="menuBtn" mat-icon-button (click)="snav.toggle()">
                 <mat-icon>menu</mat-icon>
@@ -52,17 +52,30 @@
                 </button>
             </div>
             <!-- Log Out Icon -->
-            <div fxLayout="row"  ngClass="log-out-icon">
-                <button  mat-icon-button  >
+            <div fxLayout="row"fxLayoutAlign="space-around"  ngClass="log-out-icon">
+                <button  color="" matTooltip="Log Out" mat-icon-button [matMenuTriggerFor]="profile">
                     <img mat-card-avatar src="assets/emplpyee.png" class="img2" sizes="2px">
-                </button>
+                  </button>
+            
+                  <mat-menu #profile="matMenu" yPosition="below"xPosition="before" >
+            
+                    <mat-card-header>
+                        <img mat-card-avatar src="assets/emplpyee.png" class="img2" style="padding-left: 35px;">
+                        <!-- <mat-card-title>userName</mat-card-title> -->
+                        <!-- <mat-card-subtitle>userEmail</mat-card-subtitle> -->
+                    </mat-card-header>
+            
+                    <button class="next-button" mat-button  style="margin-left: 18px;">
+                      <span>Logout</span>
+                    </button>
+                  </mat-menu>
             </div>
         </div>
     </mat-toolbar>
   
     <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0" >
-        <mat-sidenav #snav  opened="true" mode="side" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
-            <mat-nav-list (mouseover)="isExpandable=true" (mouseleave)="isExpandable=false">
+        <mat-sidenav class="SideBar-Sidenav" #snav  opened="true" mode="side" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+            <mat-nav-list (mouseover)="isExpandable=true" (mouseleave)="isExpandable=false" >
                 <div class="navlist active" (mouseover)="isExpandable=true" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" mat-list-item >
                     <button class="navBtn btnPosition" mat-icon-button>
                         <img src="/assets/lightbulb.svg">
