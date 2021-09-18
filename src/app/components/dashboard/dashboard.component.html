@@ -1,7 +1,7 @@
 <div class="example-container"  >
     <mat-toolbar class="example-toolbar">
         <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
-            <button class="menuBtn" mat-icon-button >
+            <button class="menuBtn" mat-icon-button (click)="snav.toggle()">
                 <mat-icon>menu</mat-icon>
             </button>
             <div routerLink='/home'  fxLayout="row" fxLayoutAlign="center center">
@@ -60,34 +60,34 @@
         </div>
     </mat-toolbar>
   
-    <mat-sidenav-container class="example-sidenav-container" >
-        <mat-sidenav opened="true" mode="side">
-            <mat-nav-list >
-                <div class="navlist active" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" mat-list-item >
+    <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0" >
+        <mat-sidenav #snav  opened="true" mode="side" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+            <mat-nav-list (mouseover)="isExpandable=true" (mouseleave)="isExpandable=false">
+                <div class="navlist active" (mouseover)="isExpandable=true" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" mat-list-item >
                     <button class="navBtn btnPosition" mat-icon-button>
                         <img src="/assets/lightbulb.svg">
                     </button>
                     <p class="navName  " >Notes</p>
                 </div>
-                <div class="navlist" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" mat-list-item>
+                <div class="navlist" (mouseover)="isExpandable=true" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" mat-list-item>
                     <button class="navBtn btnPosition" mat-icon-button >
                         <img src="/assets/download.svg">
                     </button>
                     <p class="navName " >Reminder</p>
                 </div>
-                <div class="navlist" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" mat-list-item >
+                <div class="navlist" (mouseover)="isExpandable=true" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" mat-list-item >
                     <button class="navBtn btnPosition" mat-icon-button >
                         <img src="/assets/label.svg">
                     </button>
                     <p class="navName " >Edit Labels</p>
                 </div>
-                <div class="navlist" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" mat-list-item >
+                <div class="navlist" (mouseover)="isExpandable=true" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" mat-list-item >
                     <button class="navBtn btnPosition" mat-icon-button >
                         <img src="/assets/archive.svg">
                     </button>
                     <p class="navName " >Archive</p>
                 </div>
-                <div class="navlist" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" mat-list-item>
+                <div class="navlist" (mouseover)="isExpandable=true" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" mat-list-item>
                     <button class="navBtn btnPosition" mat-icon-button >
                         <img src="/assets/delete.svg">
                     </button>
@@ -95,5 +95,10 @@
                 </div>
             </mat-nav-list>
         </mat-sidenav>
+
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+
     </mat-sidenav-container>
   </div>
