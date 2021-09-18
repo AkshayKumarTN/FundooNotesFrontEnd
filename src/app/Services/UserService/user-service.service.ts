@@ -22,9 +22,9 @@ export class UserServiceService {
     return this.httpService.post(`${environment.baseUrl}/api/User/Register`, params);
   }
 
-  UpdatePassword(data:any){
+  UpdatePassword(Email:string,data:any){
     const params = {
-      Email : data.Email,
+      Email : Email,
       NewPassword : data.Password,
       ConfirmNewPassword : data.ConfirmPassword
     }

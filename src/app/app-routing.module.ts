@@ -6,10 +6,13 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
+var data =localStorage.getItem('ForgotPassword');
+var token=JSON.parse(data!).Token;
+
 const routes: Routes = [
   {path : 'register', component: RegisterComponent},
   {path : 'login', component : LoginComponent},
-  {path : 'resetPassword', component : ResetPasswordComponent},
+  {path : `resetPassword/${token}`, component : ResetPasswordComponent},
   {path: 'forgotPassword', component : ForgotPasswordComponent},
   {path : 'dashboard', component : DashboardComponent}
 ];

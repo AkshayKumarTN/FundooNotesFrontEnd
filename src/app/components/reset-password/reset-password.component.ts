@@ -25,17 +25,12 @@ export class ResetPasswordComponent implements OnInit {
   ngOnInit(): void {
     this.ResetPasswordForm = new FormGroup(
       {
-        Email : new FormControl('',[Validators.required, Validators.pattern('^([a-z]){1,}[a-z0-9]*([.+_-]){0,1}[0-9a-z]+(@){1}([0-9a-z]+)(\\.([a-z]){2,}){1}(\\.[a-z]{2,})?$'),Validators.minLength(6)]),
         Password : new FormControl('',[Validators.required, Validators.pattern('^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\\W)(?!.*\\W\\w*\\W)(?!.*\\s).{8,}$'),Validators.minLength(8)]),
         ConfirmPassword : new FormControl('',[Validators.required]),
       }
     )
   }
 
-  getEmailInvalidMessage() {
-    return this.ResetPasswordForm.get("Email")?.hasError('required') ? 'You must enter a value' :
-    this.ResetPasswordForm.get("Email")?.hasError('pattern') ? 'Not a valid email' : '';
-  }
   getPasswordInvalidMessage() {
     if (this.ResetPasswordForm.get("Password")?.hasError("required")) {
       return ("Password is required"); 
@@ -48,7 +43,9 @@ export class ResetPasswordComponent implements OnInit {
 
   UpdatePassword()
   {
-    this.userService.UpdatePassword(this.ResetPasswordForm.value).subscribe((result:any) => {
+    var data=localStorage.getItem('ForgotPassword');
+    var Email=JSON.parse(data!).Email;
+    this.userService.UpdatePassword(Email,this.ResetPasswordForm.value).subscribe((result:any) => {
       console.log(result);      
       
       if(result.status == true)
