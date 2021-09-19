@@ -1,7 +1,7 @@
-<div class="example-container"  >
+<div class="example-container"   [class.example-is-mobile]="mobileQuery.matches">
     <mat-toolbar class="example-toolbar ">
         <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
-            <button class="menuBtn" mat-icon-button (click)="snav.toggle()">
+            <button class="menuBtn" mat-icon-button (click)="isExpandable=!isExpandable">
                 <mat-icon>menu</mat-icon>
             </button>
             <div routerLink='/home'  fxLayout="row" fxLayoutAlign="center center">
@@ -61,11 +61,13 @@
             
                     <mat-card-header>
                         <img mat-card-avatar src="assets/emplpyee.png" class="img2" style="padding-left: 35px;">
-                        <!-- <mat-card-title>userName</mat-card-title> -->
-                        <!-- <mat-card-subtitle>userEmail</mat-card-subtitle> -->
+                        <div fxLayout="column" fxLayoutAlign="center center">
+                        <mat-card-title>{{FirstName}} {{LastName}}</mat-card-title>
+                        <mat-card-subtitle>{{Email}}</mat-card-subtitle>
+                        </div>
                     </mat-card-header>
             
-                    <button class="next-button" mat-button  style="margin-left: 18px;">
+                    <button class="next-button" (click)=logout() mat-button  style="margin-left: 18px;">
                       <span>Logout</span>
                     </button>
                   </mat-menu>
@@ -76,35 +78,35 @@
     <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0" >
         <mat-sidenav class="SideBar-Sidenav" #snav  opened="true" mode="side" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
             <mat-nav-list (mouseover)="isExpandable=true" (mouseleave)="isExpandable=false" >
-                <div class="navlist active" (mouseover)="isExpandable=true" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" mat-list-item >
-                    <button class="navBtn btnPosition" mat-icon-button>
+                <div class="navlist active"(mouseover)="isExpandable=true" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" mat-list-item >
+                    <button class="navBtn btnPosition" mat-icon-button (mouseover)="isExpandable=true">
                         <img src="/assets/lightbulb.svg">
                     </button>
-                    <p class="navName  " >Notes</p>
+                    <p class="navName  " *ngIf="isExpandable">Notes</p>
                 </div>
                 <div class="navlist" (mouseover)="isExpandable=true" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" mat-list-item>
-                    <button class="navBtn btnPosition" mat-icon-button >
+                    <button class="navBtn btnPosition" mat-icon-button (mouseover)="isExpandable=true">
                         <img src="/assets/download.svg">
                     </button>
-                    <p class="navName " >Reminder</p>
+                    <p class="navName " *ngIf="isExpandable">Reminder</p>
                 </div>
                 <div class="navlist" (mouseover)="isExpandable=true" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" mat-list-item >
-                    <button class="navBtn btnPosition" mat-icon-button >
+                    <button class="navBtn btnPosition" mat-icon-button (mouseover)="isExpandable=true">
                         <img src="/assets/label.svg">
                     </button>
-                    <p class="navName " >Edit Labels</p>
+                    <p class="navName " *ngIf="isExpandable">Edit Labels</p>
                 </div>
                 <div class="navlist" (mouseover)="isExpandable=true" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" mat-list-item >
-                    <button class="navBtn btnPosition" mat-icon-button >
+                    <button class="navBtn btnPosition" mat-icon-button (mouseover)="isExpandable=true" >
                         <img src="/assets/archive.svg">
                     </button>
-                    <p class="navName " >Archive</p>
+                    <p class="navName " *ngIf="isExpandable">Archive</p>
                 </div>
-                <div class="navlist" (mouseover)="isExpandable=true" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" mat-list-item>
-                    <button class="navBtn btnPosition" mat-icon-button >
+                <div class="navlist"  fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" mat-list-item>
+                    <button class="navBtn btnPosition" mat-icon-button (mouseover)="isExpandable=true">
                         <img src="/assets/delete.svg">
                     </button>
-                    <p class="navName">Trash</p>
+                    <p class="navName" *ngIf="isExpandable">Trash</p>
                 </div>
             </mat-nav-list>
         </mat-sidenav>
