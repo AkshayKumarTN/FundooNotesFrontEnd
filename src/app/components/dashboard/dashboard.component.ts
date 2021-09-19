@@ -32,13 +32,13 @@ export class DashboardComponent implements OnInit {
       this._mobileQueryListener = () => changeDetectorRef.detectChanges();
       
    }
-
    
   ngOnInit(): void {
   }
 
   logout() {
     
+    localStorage.clear();
     this.routers.navigateByUrl('login');
   }
 
