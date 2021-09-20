@@ -1,0 +1,62 @@
+.mainSection {
+    margin-top: 20px;
+    grid-template-columns: minmax(min-content, 300px) minmax(200px, 1fr) 150px;
+  }
+ 
+  
+  .card {
+    width: 200px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+      rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    border-radius: 8px;
+    transform: all 3s ease-in;
+    word-wrap:break-word;
+    grid-template-columns: minmax(min-content, 300px) minmax(200px, 1fr) 150px;
+    margin-left: 25px;
+    margin-top: 25px;
+  }
+  .card:not(:last-child){
+    margin-right:10px;
+  }
+  .card:hover {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    
+  }
+  .buttons{
+    background-color: transparent;
+    border: none;
+    margin-left: 100px;
+    margin-bottom: 10px;
+  
+    // display: flex;
+    // justify-content: flex-end;
+  }
+  .icon{
+    visibility: hidden;
+    
+  }
+  .card:hover .icon{
+    visibility: visible;
+  } 
+  mat-card-content p {
+    font-size: 16px;
+    font-family: "Roboto", sans-serif;
+  }
+  
+  mat-icon {
+    font-size: 18px;
+  }
+  
+  .my-button {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    cursor: pointer;
+    padding-top: 4px;
+    border: none;
+    background-color: transparent;
+  }
+  
+  .my-button:hover {
+    background-color: rgba(153, 147, 147, 0.5);
+  }

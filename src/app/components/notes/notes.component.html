@@ -1,0 +1,37 @@
+<app-take-notes style="padding-top: 150px;"  class="main-addnote"></app-take-notes>
+<p>notes works!</p>
+<div class="note-container" >
+    <mat-card class="card" ng-class="" >
+        <div class="mainBlock" >
+            <div >
+                <!-- <strong class="title">{{note.title}}</strong> -->title
+                
+
+                <button class="buttons" matTooltip="pin Note">
+                    <img class="icon" src="assets/pin.svg" alt="">
+                </button>
+
+            </div>
+            <div id="description" #description contenteditable="false" aria-multiline="true" role="textbox"
+                class="font n1" dir="ltr" >
+                <!--{{note.description}}-->description
+            </div>
+            <!-- [hidden]="!iconVisible" -->
+
+        </div>
+
+
+
+        <div >
+            <!-- <app-icons [noteId]="note.id"></app-icons> -->
+            <!-- <app-icons class="icon" class="icon"
+                 ></app-icons> -->
+        </div>
+
+        <!-- <div>
+            <app-take-notes (messageEvent)="Refresh($event)"></app-take-notes>
+            <app-get-notes [notes]="allNotes" (event)="Refresh($event)" fxLayout="row wrap" fxFlex.xs=100
+            fxLayout.xs="column wrap" fxLayoutGap="20px"></app-get-notes>
+        </div> -->
+    </mat-card>
+</div>

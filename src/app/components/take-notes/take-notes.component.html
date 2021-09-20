@@ -1,0 +1,35 @@
+<mat-card class="cn-card ">
+    <div class="card-title" *ngIf="fullEdit">
+        <input class="title-in font" matInput placeholder="Title" id="title" [(ngModel)]="title">
+
+        <div class="pin-div" (click)="togglePin()" matTooltip="Pin note" matTooltipPosition='below'>
+            <div role="button" class="pin" [ngClass]="pin ? 'pinned-back' : 'unpinned-back'">
+                <!-- <div role="button" class="pin" [ngClass]="pin ? 'pinned-back' : 'pinned-back'">  -->
+            </div>
+        </div>
+    </div>
+
+    <div class="note-input" (click)=displayFull()>
+        <textarea contenteditable="true" aria-multiline="true" role="textbox" Placeholder="Take a note..."
+            class="notes-main" tabindex="0" spellcheck="true" id="description" [(ngModel)]="description"></textarea>
+        <div class="img-upload" *ngIf="!fullEdit"></div>
+
+    </div>
+
+    <div class="card-bottom" id="bottom" *ngIf="fullEdit">
+        <div class="note-prop">
+            <div class="reminder prop" role="button" matTooltip="Remind me" matTooltipClass="prop-tip"
+                matTooltipPosition='below'></div>
+            <div class="back-img prop" role="button" matTooltip="Add image" matTooltipPosition='below'></div>
+            <div class="back-color prop" role="button" matTooltip="Change color" matTooltipPosition='below'></div>
+            <div class="archive prop" role="button" matTooltip="Archive" matTooltipPosition='below'></div>
+            <div class="more-opn prop" role="button" matTooltip="More" matTooltipPosition='below'></div>
+
+            <!--<div class="">  -->
+            <!-- Templete statements -->
+        </div>
+        <div class="close-note" (click)="addNote()">Close</div>
+    </div>
+
+    <!-- <app-icons></app-icons> -->
+</mat-card>

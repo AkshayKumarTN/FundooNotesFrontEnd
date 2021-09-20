@@ -9,6 +9,8 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MaterialModule } from './material/material.module';
+import { TakeNotesComponent } from './components/take-notes/take-notes.component';
+import { NotesComponent } from './components/notes/notes.component';
 
 
 
@@ -21,10 +23,12 @@ import { MaterialModule } from './material/material.module';
     LoginComponent,
     ResetPasswordComponent,
     ForgotPasswordComponent,
-    DashboardComponent
+    DashboardComponent,
+    TakeNotesComponent,
+    NotesComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule
