@@ -27,11 +27,43 @@ export class NotesServiceService {
 
   }
 
+  GetAllUnPinNotes(token: any,data: any) {
+    let params = {
+      UserId: this.user.key,
+    };
+    this.getToken()
+    console.log(this.header);
+    return this.httpService.put(`${environment.baseUrl}/api/UnPinnedNotes?UserId=${this.user.key}`,null,true,this.header);
+  }
+  GetAllPinNotes(token: any,data: any) {
+    let params = {
+      UserId: this.user.key,
+    };
+    this.getToken()
+    console.log(this.header);
+    return this.httpService.put(`${environment.baseUrl}/api/PinnedNotes?UserId=${this.user.key}`,null,true,this.header);
+  }
+
+  UnPinNote(token: any,data: any) {
+    this.getToken()
+    console.log(this.header);
+    return this.httpService.put(`${environment.baseUrl}/api/UnPinNote?noteId=${data.noteId}`,null,true,this.header);
+  }
+
+  PinNote(token: any,data: any) {
+    this.getToken()
+    console.log(this.header);
+    return this.httpService.put(`${environment.baseUrl}/api/PinNote?noteId=${data.noteId}`,null,true,this.header);
+  }
+
+
+
   getToken(){
     this.header = {
       headers: {Authorization: "Bearer " + this.user.Token}
     }
   }
+  
   
 
   

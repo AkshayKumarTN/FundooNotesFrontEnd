@@ -25,11 +25,9 @@
   .buttons{
     background-color: transparent;
     border: none;
-    margin-left: 100px;
-    margin-bottom: 10px;
   
-    // display: flex;
-    // justify-content: flex-end;
+    display: flex;
+    justify-content: flex-end;
   }
   .icon{
     visibility: hidden;
@@ -60,3 +58,10 @@
   .my-button:hover {
     background-color: rgba(153, 147, 147, 0.5);
   }
+
+  .pin{
+    background-repeat: no-repeat;
+    background-size: 24px 32px;
+    height: 30px;
+    width: 24px;
+}

@@ -25,7 +25,7 @@ import { NotesComponent } from './components/notes/notes.component';
     ForgotPasswordComponent,
     DashboardComponent,
     TakeNotesComponent,
-    NotesComponent
+    NotesComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
