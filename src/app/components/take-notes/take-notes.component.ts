@@ -55,20 +55,20 @@ export class TakeNotesComponent implements OnInit {
           });
 
         }
-    },(error: HttpErrorResponse) => {
-      console.log(error.error.message);
-      this.snackBar.open(`${error.error.message}`, '', {
-        duration: 4000,
-        verticalPosition: 'bottom',
-        horizontalPosition: 'left'
+      },(error: HttpErrorResponse) => {
+        console.log(error.error.message);
+        this.snackBar.open(`${error.error.message}`, '', {
+          duration: 4000,
+          verticalPosition: 'bottom',
+          horizontalPosition: 'left'
+        });
       });
-    });
-    this.title = "";
-    this.description = "";
-    this.fullEdit = false;
-    } else {
+      this.title = "";
+      this.description = "";
       this.fullEdit = false;
-    }
+    } else {
+        this.fullEdit = false;
+      }
   }
 
 
