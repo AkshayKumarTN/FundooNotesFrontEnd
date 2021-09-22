@@ -10,25 +10,59 @@
     </div>
 
     <div class="note-input" (click)=displayFull()>
+        <div fxLayoutAlign="start">
         <textarea contenteditable="true" aria-multiline="true" role="textbox" Placeholder="Take a note..."
             class="notes-main" tabindex="0" spellcheck="true" id="description" [(ngModel)]="description"></textarea>
         <div class="img-upload" *ngIf="!fullEdit"></div>
+        </div>
 
     </div>
 
-    <div class="card-bottom" id="bottom" *ngIf="fullEdit">
-        <div class="note-prop">
-            <div class="reminder prop" role="button" matTooltip="Remind me" matTooltipClass="prop-tip"
-                matTooltipPosition='below'></div>
-            <div class="back-img prop" role="button" matTooltip="Add image" matTooltipPosition='below'></div>
-            <div class="back-color prop" role="button" matTooltip="Change color" matTooltipPosition='below'></div>
-            <div class="archive prop" role="button" matTooltip="Archive" matTooltipPosition='below'></div>
-            <div class="more-opn prop" role="button" matTooltip="More" matTooltipPosition='below'></div>
+    <div class="card-bottom" fxLayoutAlign="space-between start"  id="bottom" *ngIf="fullEdit">
+        <div fxLayout="row" fxLayoutAlign="space-around" fxLayoutGap="20px"> 
 
-            <!--<div class="">  -->
-            <!-- Templete statements -->
+            <button mat-icon-button class="example-icon favorite-icon" [matMenuTriggerFor]="Remainder">
+                <mat-menu #Remainder="matMenu" class="r-option">
+                    <p class="remindHead">Remainder:</p>
+                    <button mat-menu-item class="remindbutton">
+                        <p>Later today</p>
+                        <p>9:00PM</p>
+                    </button>
+                    <button mat-menu-item class="remindbutton">
+                        <p>Tomorrow</p>
+                        <p>9:00AM</p>
+                    </button>
+                </mat-menu>
+                <mat-icon mat-list-icon class="material-icons-outlined"matTooltip="Remind me">notifications_none</mat-icon>
+            </button>
+            <button mat-icon-button class="example-icon favorite-icon">
+                <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="collaborater">person_add</mat-icon>
+            </button>
+            <button mat-icon-button class="example-icon favorite-icon" [matMenuTriggerFor]="Color">
+                <mat-menu #Color="matMenu" yPosition="above">
+                    <span class="colors">
+                        <mat-icon mat-list-icon >done</mat-icon>
+                    </span>
+                </mat-menu>
+                <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="Change Color">color_lens</mat-icon>
+            </button>
+            <button mat-icon-button class="example-icon favorite-icon">
+                <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="Add Image">image</mat-icon>
+            </button>
+            <button mat-icon-button class="example-icon favorite-icon" glow-icon>
+                <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="Archive">archive</mat-icon>
+            </button>
+            <button mat-icon-button class="example-icon favorite-icon" [matMenuTriggerFor]="moreMenu">
+                <mat-menu #moreMenu="matMenu">
+                    <button mat-menu-item>Add Label</button>
+                    <button mat-menu-item>Delete Label</button>
+                </mat-menu>
+                <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="More">more_vert</mat-icon>
+            </button>
+        </div>   
+        <div fxLayoutAlign="end start" >
+        <div  class="close-note" (click)="addNote()">Close</div>
         </div>
-        <div class="close-note" (click)="addNote()">Close</div>
     </div>
 
     <!-- <app-icons></app-icons> -->

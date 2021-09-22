@@ -19,6 +19,7 @@ export class NotesServiceService {
     let params = {
       Title: data.Title,
       Description: data.Description,
+      Pin : data.pin,
       UserId: this.user.key,
     };
     this.getToken()

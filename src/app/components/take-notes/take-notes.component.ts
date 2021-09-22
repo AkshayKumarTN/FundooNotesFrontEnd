@@ -35,6 +35,7 @@ export class TakeNotesComponent implements OnInit {
     let data = {
       Title: this.title,
       Description: this.description,
+      pin : this.pin
     }
     console.log(data)
     console.log(" add note data ", data);

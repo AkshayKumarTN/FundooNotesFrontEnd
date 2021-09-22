@@ -38,7 +38,7 @@ export class DashboardComponent implements OnInit {
 
   logout() {
     
-    localStorage.clear();
+    //localStorage.clear();
     this.routers.navigateByUrl('login');
   }
 
