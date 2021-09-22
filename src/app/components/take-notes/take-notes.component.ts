@@ -3,6 +3,7 @@ import { NotesServiceService } from 'src/app/Services/NotesService/notes-service
 import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpErrorResponse } from '@angular/common/http';
+import { flatten } from '@angular/compiler';
 
 @Component({
   selector: 'app-take-notes',
@@ -13,6 +14,7 @@ export class TakeNotesComponent implements OnInit {
 
   fullEdit: boolean = false;
   pin: boolean = false;
+  archive: boolean = false;
   title='';
   description='';
   isOpen = true;
@@ -35,7 +37,8 @@ export class TakeNotesComponent implements OnInit {
     let data = {
       Title: this.title,
       Description: this.description,
-      pin : this.pin
+      pin : this.pin,
+      archive : this.archive
     }
     console.log(data)
     console.log(" add note data ", data);
@@ -76,6 +79,10 @@ export class TakeNotesComponent implements OnInit {
 
   displayFull() {
     this.fullEdit = true;
+  }
+
+  toggleAarchive(){
+    this.archive = !this.archive;
   }
 
 }

@@ -50,8 +50,13 @@
                 <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="Add Image">image</mat-icon>
             </button>
             <button mat-icon-button class="example-icon favorite-icon" glow-icon>
-                <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="Archive">archive</mat-icon>
+                <mat-icon mat-list-icon class="material-icons-outlined" (click)="toggleAarchive()" *ngIf="!archive; else enabled" matTooltip="Archive">archive</mat-icon>
             </button>
+            <ng-template #enabled>
+            <button mat-icon-button class="example-icon favorite-icon" glow-icon>
+                <mat-icon mat-list-icon class="material-icons-outlined" (click)="toggleAarchive()"  matTooltip="UnAarchive">unarchive</mat-icon>
+            </button>
+           </ng-template>
             <button mat-icon-button class="example-icon favorite-icon" [matMenuTriggerFor]="moreMenu">
                 <mat-menu #moreMenu="matMenu">
                     <button mat-menu-item>Add Label</button>

@@ -20,6 +20,7 @@ export class NotesServiceService {
       Title: data.Title,
       Description: data.Description,
       Pin : data.pin,
+      Archieve : data.archive,
       UserId: this.user.key,
     };
     this.getToken()
