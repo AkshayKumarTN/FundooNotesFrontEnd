@@ -11,6 +11,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MaterialModule } from './material/material.module';
 import { TakeNotesComponent } from './components/take-notes/take-notes.component';
 import { NotesComponent } from './components/notes/notes.component';
+import { ArchiveNotesComponent } from './archive-notes/archive-notes.component';
 
 
 
@@ -26,6 +27,7 @@ import { NotesComponent } from './components/notes/notes.component';
     DashboardComponent,
     TakeNotesComponent,
     NotesComponent,
+    ArchiveNotesComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
