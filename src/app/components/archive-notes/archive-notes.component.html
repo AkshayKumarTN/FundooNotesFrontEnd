@@ -1,6 +1,70 @@
 <div class="Notes-Pin-Unpin" fxLayout="column" fxLayoutGap="80px">
-    <div>
-        <app-take-notes style="padding-top: 150px;"  class="main-addnote"></app-take-notes>
+    <div style="display: flex;flex-wrap: wrap;padding: 10px 180px;justify-content: start;" class="main-getnote" >
+        <div class="neVct-LS81yb-tJHJj" >ARCHIVE</div>
+        <div class="note-container" *ngFor="let note of archiveNotes;">
+            <mat-card class="card" [style.background-color]="note.color">
+                <div  class="mainBlock" [style.background-color]="note.color">
+                    <div fxLayout="row" fxLayoutAlign="space-between center">
+                        <strong class="title">{{note.title}}</strong>  
+                        <div class="pin-class">
+                            <button *ngIf="!note.pin" (click)="PinIt(note);" mat-button
+                            mat-icon-button>
+                            <span matTooltip="pin archive note">
+                                <img class="icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICA8cGF0aCBmaWxsPSJub25lIiBkPSJNMCAwaDI0djI0SDB6Ii8+CiAgPHBhdGggZmlsbD0iIzAwMCIgZD0iTTE3IDR2N2wyIDN2MmgtNnY1bC0xIDEtMS0xdi01SDV2LTJsMi0zVjRjMC0xLjEuOS0yIDItMmg2YzEuMTEgMCAyIC44OSAyIDJ6TTkgNHY3Ljc1TDcuNSAxNGg5TDE1IDExLjc1VjRIOXoiLz4KPC9zdmc+Cg==">
+                            </span>
+                            </button>
+                        </div>    
+
+                    </div>
+                    <div id="description" #description contenteditable="false" aria-multiline="true" role="textbox"
+                        class="font n1" dir="ltr" [style.background-color]="note.color">{{note.description}}</div>
+                    <div fxLayout="row" fxLayoutAlign="space-around end" > 
+
+                        <button mat-icon-button class="example-icon favorite-icon" [matMenuTriggerFor]="Remainder">
+                            <mat-menu #Remainder="matMenu" class="r-option">
+                                <p class="remindHead">Remainder:</p>
+                                <button mat-menu-item class="remindbutton">
+                                    <p>Later today</p>
+                                    <p>9:00PM</p>
+                                </button>
+                                <button mat-menu-item class="remindbutton">
+                                    <p>Tomorrow</p>
+                                    <p>9:00AM</p>
+                                </button>
+                            </mat-menu>
+                            <mat-icon mat-list-icon class="material-icons-outlined"matTooltip="Remind me">notifications_none</mat-icon>
+                        </button>
+                        <button mat-icon-button class="example-icon favorite-icon">
+                            <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="collaborater">person_add</mat-icon>
+                        </button>
+                        <button mat-icon-button class="example-icon favorite-icon" [matMenuTriggerFor]="Color">
+                            <mat-menu #Color="matMenu" yPosition="above">
+                                <span class="colors">
+                                    <mat-icon mat-list-icon >done</mat-icon>
+                                </span>
+                            </mat-menu>
+                            <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="Change Color">color_lens</mat-icon>
+                        </button>
+                        <button mat-icon-button class="example-icon favorite-icon">
+                            <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="Add Image">image</mat-icon>
+                        </button>
+                        <button mat-icon-button class="example-icon favorite-icon" glow-icon>
+                            <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="Archive">archive</mat-icon>
+                        </button>
+                        <button mat-icon-button class="example-icon favorite-icon" [matMenuTriggerFor]="moreMenu">
+                            <mat-menu #moreMenu="matMenu">
+                                <button mat-menu-item>Add Label</button>
+                                <button mat-menu-item>Delete Label</button>
+                            </mat-menu>
+                            <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="More">more_vert</mat-icon>
+                        </button>
+                    </div>   
+
+                </div>
+
+
+
+            </mat-card>
+        </div>
     </div>
-    <p>archive-notes works!</p>
 </div>
