@@ -78,8 +78,8 @@
     <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0" >
         <mat-sidenav class="SideBar-Sidenav" #snav  opened="true" mode="side" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
             <mat-nav-list (mouseover)="isExpandable=true" (mouseleave)="isExpandable=false" >
-                <div class="navlist active"(mouseover)="isExpandable=true" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" mat-list-item >
-                    <button class="navBtn btnPosition" mat-icon-button (mouseover)="isExpandable=true" routerLink="/dashboard">
+                <div class="navlist active"(mouseover)="isExpandable=true" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" mat-list-item routerLink="/dashboard">
+                    <button class="navBtn btnPosition" mat-icon-button (mouseover)="isExpandable=true" >
                         <img src="/assets/lightbulb.svg">
                     </button>
                     <p class="navName  " *ngIf="isExpandable">Notes</p>
@@ -96,7 +96,7 @@
                     </button>
                     <p class="navName " *ngIf="isExpandable">Edit Labels</p>
                 </div>
-                <div class="navlist" (mouseover)="isExpandable=true" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" mat-list-item >
+                <div class="navlist" (mouseover)="isExpandable=true" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" mat-list-item routerLink="/dashboard/archive">
                     <button class="navBtn btnPosition" mat-icon-button (mouseover)="isExpandable=true" >
                         <img src="/assets/archive.svg">
                     </button>

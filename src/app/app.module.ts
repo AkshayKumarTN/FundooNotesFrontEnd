@@ -11,7 +11,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MaterialModule } from './material/material.module';
 import { TakeNotesComponent } from './components/take-notes/take-notes.component';
 import { NotesComponent } from './components/notes/notes.component';
-import { ArchiveNotesComponent } from './archive-notes/archive-notes.component';
+import { ArchiveNotesComponent } from '../app/components/archive-notes/archive-notes.component';
 
 
 

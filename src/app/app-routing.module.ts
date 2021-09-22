@@ -6,6 +6,7 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NotesComponent } from './components/notes/notes.component';
+import { ArchiveNotesComponent } from './components/archive-notes/archive-notes.component';
 
 var data =localStorage.getItem('ForgotPassword');
 var token=JSON.parse(data!).Token;
@@ -19,7 +20,8 @@ const routes: Routes = [
   children: [
 
     { path: '', redirectTo: "notes", pathMatch: "full" },
-    { path: 'notes', component: NotesComponent }
+    { path: 'notes', component: NotesComponent },
+    {path: 'archive',component: ArchiveNotesComponent}
   ]
 }
 ];

@@ -59,6 +59,20 @@ export class NotesServiceService {
   }
 
 
+  /// ArchiveNotes
+
+  GetAllArchiveNotes(token: any,data: any) {
+    let params = {
+      UserId: this.user.key,
+    };
+    this.getToken()
+    console.log(this.header);
+    return this.httpService.put(`${environment.baseUrl}/api/ArchiveNotes?UserId=${this.user.key}`,null,true,this.header);
+  }
+
+
+
+
 
   getToken(){
     this.header = {
