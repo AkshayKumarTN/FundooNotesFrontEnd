@@ -58,6 +58,17 @@ export class NotesServiceService {
     return this.httpService.put(`${environment.baseUrl}/api/PinNote?noteId=${data.noteId}`,null,true,this.header);
   }
 
+  AarchiveNote(token: any,data: any) {
+    this.getToken()
+    console.log(this.header);
+    return this.httpService.put(`${environment.baseUrl}/api/Archive?noteId=${data.noteId}`,null,true,this.header);
+  }
+  UnAarchiveNote(token: any,data: any) {
+    this.getToken()
+    console.log(this.header);
+    return this.httpService.put(`${environment.baseUrl}/api/UnArchive?noteId=${data.noteId}`,null,true,this.header);
+  }
+
 
   /// ArchiveNotes
 

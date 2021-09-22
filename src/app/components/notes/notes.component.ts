@@ -85,4 +85,15 @@ export class NotesComponent implements OnInit {
     
   }
 
+  ToggleAarchive(note : any){
+    let updateObject = {
+      noteId: note.noteId
+    };
+    let result: any = '';
+      this.noteService.AarchiveNote(this.token,updateObject).subscribe((response: any) => {
+        console.log(response);
+      })
+    window.location.reload();
+  }
+
 }

@@ -22,14 +22,18 @@
 
                         <button mat-icon-button class="example-icon favorite-icon" [matMenuTriggerFor]="Remainder">
                             <mat-menu #Remainder="matMenu" class="r-option">
-                                <p class="remindHead">Remainder:</p>
-                                <button mat-menu-item class="remindbutton">
-                                    <p>Later today</p>
-                                    <p>9:00PM</p>
+                                <p class="r-par">Remainder:</p>
+                                <button mat-menu-item class="remainder-but" fxLayout="row" fxLayoutGap="20px" >
+                                  <p>Later today</p>
+                                  <p>8:00PM</p>
                                 </button>
-                                <button mat-menu-item class="remindbutton">
-                                    <p>Tomorrow</p>
-                                    <p>9:00AM</p>
+                                <button mat-menu-item class="remainder-but" fxLayout="row" fxLayoutGap="20px">
+                                  <p>Tomorrow</p>
+                                  <p>8:00AM</p>
+                                </button>
+                                <button mat-menu-item class="remainder-but" fxLayout="row" fxLayoutGap="20px">
+                                  <p>Next Week</p>
+                                  <p>Mon 8:00AM</p>
                                 </button>
                             </mat-menu>
                             <mat-icon mat-list-icon class="material-icons-outlined"matTooltip="Remind me">notifications_none</mat-icon>
@@ -49,7 +53,7 @@
                             <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="Add Image">image</mat-icon>
                         </button>
                         <button mat-icon-button class="example-icon favorite-icon" glow-icon>
-                            <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="Archive">archive</mat-icon>
+                            <mat-icon mat-list-icon class="material-icons-outlined" (click)="ToggleAarchive(note)"  matTooltip="UnAarchive">archive</mat-icon>
                         </button>
                         <button mat-icon-button class="example-icon favorite-icon" [matMenuTriggerFor]="moreMenu">
                             <mat-menu #moreMenu="matMenu">

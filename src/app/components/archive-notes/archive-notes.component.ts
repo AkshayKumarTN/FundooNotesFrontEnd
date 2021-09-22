@@ -29,23 +29,6 @@ export class ArchiveNotesComponent implements OnInit {
     })
   
   }
-
-  UnPinIt(note : any) {
-    note.pin = !note.pin;
-    let updateObject = {
-      noteId: note.noteId,
-      pin: note.isPined
-    };
-    let result: any = '';
-      this.noteService.UnPinNote(this.token,updateObject).subscribe((response: any) => {
-        console.log(response);
-      })
-    
-    window.location.reload();
-    
-  }
-
-
   PinIt(note : any) {
     note.pin = !note.pin;
     let updateObject = {
@@ -58,6 +41,16 @@ export class ArchiveNotesComponent implements OnInit {
       })
     window.location.reload();
     
+  }
+  ToggleAarchive(note : any){
+    let updateObject = {
+      noteId: note.noteId
+    };
+    let result: any = '';
+      this.noteService.UnAarchiveNote(this.token,updateObject).subscribe((response: any) => {
+        console.log(response);
+      })
+    window.location.reload();
   }
 
 }

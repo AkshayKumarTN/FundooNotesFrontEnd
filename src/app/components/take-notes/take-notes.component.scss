@@ -154,6 +154,8 @@
         .close-note:hover{
         background-color: rgb(233, 233, 233);
         }
+
+        
     
        
   
@@ -235,6 +237,18 @@
         
  
 }
+
+
+.r-par{
+    align-self: flex-start;
+    margin-left: 15px;
+    padding-top: 5px;
+    font-family: 'Roboto',sans-serif;
+   }
+   .r-option{
+    max-width: 300px;
+    width: 300px !important;
+   }
 @media screen and (max-width: 370px){
     .prop{
         margin: auto;
