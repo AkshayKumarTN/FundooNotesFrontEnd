@@ -63,9 +63,9 @@
                             <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="Archive">archive</mat-icon>
                         </button>
                         <button mat-icon-button class="example-icon favorite-icon" [matMenuTriggerFor]="moreMenu">
-                            <mat-menu #moreMenu="matMenu">
-                                <button mat-menu-item>Add Label</button>
-                                <button mat-menu-item>Delete Label</button>
+                            <mat-menu #moreMenu="matMenu">                                
+                                <button (click)="DeleteNote(note);" mat-menu-item>Delete note</button>
+                                <button mat-menu-item>Add label</button>
                             </mat-menu>
                             <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="More">more_vert</mat-icon>
                         </button>
@@ -142,9 +142,9 @@
                                     <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="Archive">archive</mat-icon>
                                 </button>
                                 <button mat-icon-button class="example-icon favorite-icon" [matMenuTriggerFor]="moreMenu">
-                                    <mat-menu #moreMenu="matMenu">
-                                        <button mat-menu-item>Add Label</button>
-                                        <button mat-menu-item>Delete Label</button>
+                                    <mat-menu #moreMenu="matMenu">                                
+                                        <button (click)="DeleteNote(note);" mat-menu-item>Delete note</button>
+                                        <button mat-menu-item>Add label</button>
                                     </mat-menu>
                                     <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="More">more_vert</mat-icon>
                                 </button>

@@ -83,6 +83,12 @@ export class NotesServiceService {
     return this.httpService.put(`${environment.baseUrl}/api/NoteColor?noteId=${noteId}&color=${Color}`,null,true,this.header);
   }
 
+  DeleteNote(token: any,data: any) {
+    this.getToken()
+    console.log(this.header);
+    return this.httpService.delete(`${environment.baseUrl}/api/NoteTrash?noteId=${data.noteId}`,null,true,this.header);
+  }
+
 
   /// ArchiveNotes
 
