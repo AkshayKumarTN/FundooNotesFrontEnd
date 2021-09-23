@@ -23,7 +23,8 @@ export class NotesServiceService {
       Pin : data.pin,
       Archieve : data.archive,
       UserId: this.user.key,
-      Color : data.color
+      Color : data.color,
+      reminder : data.reminder
     };
     this.getToken()
     console.log(this.header);
@@ -97,6 +98,12 @@ export class NotesServiceService {
     this.getToken()
     console.log(this.header);
     return this.httpService.put(`${environment.baseUrl}/api/ArchiveNotes?UserId=${this.user.key}`,null,true,this.header);
+  }
+
+  AddReminder(token: any,noteId: any,remider : string) {
+    this.getToken()
+    console.log(this.header);
+    return this.httpService.put(`${environment.baseUrl}/api/SetReminder?noteId=${noteId}&reminder=${remider}`,null,true,this.header);
   }
 
 

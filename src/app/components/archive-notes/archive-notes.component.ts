@@ -84,7 +84,7 @@ export class ArchiveNotesComponent implements OnInit {
     },
     {
       "Text": "Next Week",
-      "Time": "8:00 AM"
+      "Time": "Mon 8:00 AM"
     }
   ];
 
@@ -98,6 +98,9 @@ export class ArchiveNotesComponent implements OnInit {
 
   }
 
+
+  
+
   GetAllNotes() {
     this.noteService.GetAllArchiveNotes(this.token, "data").subscribe((response: any) => {
       console.log(response);
@@ -108,6 +111,7 @@ export class ArchiveNotesComponent implements OnInit {
     })
   
   }
+
   PinIt(note : any) {
     note.pin = !note.pin;
     let updateObject = {
@@ -138,6 +142,35 @@ export class ArchiveNotesComponent implements OnInit {
     window.location.reload();
     
   }
+
+  AddReminder(note : any, remider : any) {
+    let result: any = '';
+    let noteReminder = remider.Text +", "+remider.Time;
+    console.log(remider);
+      this.noteService.AddReminder(this.token,note.noteId,noteReminder).subscribe((response: any) => {
+        console.log(response);
+        if(response.success == true)
+        {
+          this.snackBar.open(`${response.message}`, '', {
+            duration: 4000,
+            verticalPosition: 'bottom',
+            horizontalPosition: 'left'
+          });
+
+        }
+        
+      },(error: HttpErrorResponse) => {
+        console.log(error.error.message);
+        this.snackBar.open(`${error.error.message}`, '', {
+          duration: 4000,
+          verticalPosition: 'bottom',
+          horizontalPosition: 'left'
+        });
+      })
+    //window.location.reload();
+
+  }
+
   ToggleAarchive(note : any){
     let updateObject = {
       noteId: note.noteId

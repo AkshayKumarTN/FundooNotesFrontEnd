@@ -106,17 +106,9 @@
                                 <button mat-icon-button class="example-icon favorite-icon icon" [matMenuTriggerFor]="Remainder">
                                     <mat-menu #Remainder="matMenu" class="r-option">
                                         <p class="r-par">Remainder:</p>
-                                        <button mat-menu-item class="remainder-but" fxLayout="row" fxLayoutGap="20px" >
-                                          <p>Later today</p>
-                                          <p>8:00PM</p>
-                                        </button>
-                                        <button mat-menu-item class="remainder-but" fxLayout="row" fxLayoutGap="20px">
-                                          <p>Tomorrow</p>
-                                          <p>8:00AM</p>
-                                        </button>
-                                        <button mat-menu-item class="remainder-but" fxLayout="row" fxLayoutGap="20px">
-                                          <p>Next Week</p>
-                                          <p>{{ note.reminder }}</p>
+                                        <button mat-menu-item class="remainder-but" fxLayout="row" fxLayoutGap="20px" *ngFor="let reminder of reminders;" (click)="AddReminder(note,reminder)">
+                                          <p>{{reminder.Text}}</p>
+                                          <p>{{reminder.Time}}</p>
                                         </button>
                                     </mat-menu>
                                     <mat-icon mat-list-icon class="material-icons-outlined"matTooltip="Remind me">notifications_none</mat-icon>

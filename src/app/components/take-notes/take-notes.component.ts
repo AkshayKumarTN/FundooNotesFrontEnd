@@ -19,6 +19,7 @@ export class TakeNotesComponent implements OnInit {
   description='';
   isOpen = true;
   userColor: string = "white";
+  noteReminder : string ="NULL";
   token: any;
   colors: any[] = [
     {
@@ -116,7 +117,8 @@ export class TakeNotesComponent implements OnInit {
       Description: this.description,
       pin : this.pin,
       archive : this.archive,
-      color : this.userColor
+      color : this.userColor,
+      reminder : this.noteReminder
     }
     console.log(data)
     console.log(" add note data ", data);
@@ -170,6 +172,10 @@ export class TakeNotesComponent implements OnInit {
     this.userColor = color;
     for (var val of this.colors)
       val.icon = val.color == color ? true : false;
+  }
+  AddReminder(remider : any) {
+    this.noteReminder = remider.Text +", "+remider.Time;
+    
   }
 }
 

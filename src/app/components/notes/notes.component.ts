@@ -201,6 +201,34 @@ export class NotesComponent implements OnInit {
     
   }
 
+  AddReminder(note : any, remider : any) {
+    let result: any = '';
+    let noteReminder = remider.Text +", "+remider.Time;
+    console.log(remider);
+      this.noteService.AddReminder(this.token,note.noteId,noteReminder).subscribe((response: any) => {
+        console.log(response);
+        if(response.success == true)
+        {
+          this.snackBar.open(`${response.message}`, '', {
+            duration: 4000,
+            verticalPosition: 'bottom',
+            horizontalPosition: 'left'
+          });
+
+        }
+        
+      },(error: HttpErrorResponse) => {
+        console.log(error.error.message);
+        this.snackBar.open(`${error.error.message}`, '', {
+          duration: 4000,
+          verticalPosition: 'bottom',
+          horizontalPosition: 'left'
+        });
+      })
+    //window.location.reload();
+
+  }
+
   ToggleAarchive(note : any){
     let updateObject = {
       noteId: note.noteId
