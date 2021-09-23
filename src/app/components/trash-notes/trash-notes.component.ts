@@ -33,4 +33,60 @@ export class TrashNotesComponent implements OnInit {
   
   }
 
+  DeleteNoteForever(note : any){
+    let updateObject = {
+      noteId: note.noteId
+    };
+    let result: any = '';
+      this.noteService.DeleteNoteForever(this.token,updateObject).subscribe((response: any) => {
+        console.log(response);
+        if(response.success == true)
+        {
+          this.snackBar.open(`${response.message}`, '', {
+            duration: 4000,
+            verticalPosition: 'bottom',
+            horizontalPosition: 'left'
+          });
+
+        }
+        
+      },(error: HttpErrorResponse) => {
+        console.log(error.error.message);
+        this.snackBar.open(`${error.error.message}`, '', {
+          duration: 4000,
+          verticalPosition: 'bottom',
+          horizontalPosition: 'left'
+        });
+      })
+    window.location.reload();
+  }
+
+  RestoreNote(note : any){
+    let updateObject = {
+      noteId: note.noteId
+    };
+    let result: any = '';
+      this.noteService.RestoreNote(this.token,updateObject).subscribe((response: any) => {
+        console.log(response);
+        if(response.success == true)
+        {
+          this.snackBar.open(`${response.message}`, '', {
+            duration: 4000,
+            verticalPosition: 'bottom',
+            horizontalPosition: 'left'
+          });
+
+        }
+        
+      },(error: HttpErrorResponse) => {
+        console.log(error.error.message);
+        this.snackBar.open(`${error.error.message}`, '', {
+          duration: 4000,
+          verticalPosition: 'bottom',
+          horizontalPosition: 'left'
+        });
+      })
+    window.location.reload();
+  }
+
 }

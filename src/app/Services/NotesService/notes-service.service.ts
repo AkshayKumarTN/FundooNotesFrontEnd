@@ -73,14 +73,12 @@ export class NotesServiceService {
 
   ChangeColor(token: any,noteId: any,Color : string) {
     this.getToken()
-    console.log(noteId);
-    console.log(Color);
-    console.log(this.header);
-    let params = new HttpParams()
-        .set('NoteId',noteId)
-        .set('Color',Color);
+    let params = {
+      NoteId: noteId,
+      Color: Color
+    };
 
-    return this.httpService.put(`${environment.baseUrl}/api/NoteColor?noteId=${noteId}&color=${Color}`,null,true,this.header);
+    return this.httpService.put(`${environment.baseUrl}/api/NoteColor`,params,true,this.header);
   }
 
   DeleteNote(token: any,data: any) {
@@ -111,6 +109,18 @@ export class NotesServiceService {
     this.getToken()
     console.log(this.header);
     return this.httpService.put(`${environment.baseUrl}/api/TrashNotes?UserId=${this.user.key}`,null,true,this.header);
+  }
+
+  DeleteNoteForever(token: any,data: any) {
+    this.getToken()
+    console.log(this.header);
+    return this.httpService.delete(`${environment.baseUrl}/api/Note?noteId=${data.noteId}`,null,true,this.header);
+  }
+
+  RestoreNote(token: any,data: any) {
+    this.getToken()
+    console.log(this.header);
+    return this.httpService.put(`${environment.baseUrl}/api/RestoreNote?noteId=${data.noteId}`,null,true,this.header);
   }
 
 

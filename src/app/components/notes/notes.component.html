@@ -24,7 +24,7 @@
                         class="font n1" dir="ltr" [style.background-color]="note.color">{{note.description}}</div>
                     <div fxLayout="row" fxLayoutAlign="space-around end" > 
 
-                        <button mat-icon-button class="example-icon favorite-icon" [matMenuTriggerFor]="Remainder">                            
+                        <button mat-icon-button class="example-icon favorite-icon icon" [matMenuTriggerFor]="Remainder">                            
                             <mat-menu #Remainder="matMenu" class="r-option">
                                 <p class="r-par">Remainder:</p>
                                 <button mat-menu-item class="remainder-but" fxLayout="row" fxLayoutGap="20px" >
@@ -42,10 +42,10 @@
                             </mat-menu>
                             <mat-icon mat-list-icon class="material-icons-outlined"matTooltip="Remind me">notifications_none</mat-icon>
                         </button>
-                        <button mat-icon-button class="example-icon favorite-icon">
+                        <button mat-icon-button class="example-icon favorite-icon icon">
                             <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="collaborater">person_add</mat-icon>
                         </button>
-                        <button mat-icon-button class="example-icon favorite-icon" [matMenuTriggerFor]="colorMenu"  matTooltip="Change Color">
+                        <button mat-icon-button class="example-icon favorite-icon icon" [matMenuTriggerFor]="colorMenu"  matTooltip="Change Color">
                             <mat-menu #colorMenu="matMenu" yPosition="above">
                                 <div class="get_note_color_menu">
                                     <span class="colors" (click)="ChangeColor(colors[i].color,note)"  [style.background-color]="colors[i].color"
@@ -56,13 +56,13 @@
                             </mat-menu>
                             <mat-icon mat-list-icon class="material-icons-outlined">color_lens</mat-icon>
                         </button>
-                        <button mat-icon-button class="example-icon favorite-icon">
+                        <button mat-icon-button class="example-icon favorite-icon icon">
                             <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="Add Image">image</mat-icon>
                         </button>
-                        <button mat-icon-button class="example-icon favorite-icon" (click)="ToggleAarchive(note);" glow-icon>
+                        <button mat-icon-button class="example-icon favorite-icon icon" (click)="ToggleAarchive(note);" glow-icon>
                             <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="Archive">archive</mat-icon>
                         </button>
-                        <button mat-icon-button class="example-icon favorite-icon" [matMenuTriggerFor]="moreMenu">
+                        <button mat-icon-button class="example-icon favorite-icon icon" [matMenuTriggerFor]="moreMenu">
                             <mat-menu #moreMenu="matMenu">                                
                                 <button (click)="DeleteNote(note);" mat-menu-item>Delete note</button>
                                 <button mat-menu-item>Add label</button>
@@ -103,7 +103,7 @@
                         
                             <div fxLayout="row" fxLayoutAlign="space-around end" > 
 
-                                <button mat-icon-button class="example-icon favorite-icon" [matMenuTriggerFor]="Remainder">
+                                <button mat-icon-button class="example-icon favorite-icon icon" [matMenuTriggerFor]="Remainder">
                                     <mat-menu #Remainder="matMenu" class="r-option">
                                         <p class="r-par">Remainder:</p>
                                         <button mat-menu-item class="remainder-but" fxLayout="row" fxLayoutGap="20px" >
@@ -121,10 +121,10 @@
                                     </mat-menu>
                                     <mat-icon mat-list-icon class="material-icons-outlined"matTooltip="Remind me">notifications_none</mat-icon>
                                 </button>
-                                <button mat-icon-button class="example-icon favorite-icon">
+                                <button mat-icon-button class="example-icon favorite-icon icon">
                                     <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="collaborater">person_add</mat-icon>
                                 </button>
-                                <button mat-icon-button class="example-icon favorite-icon" [matMenuTriggerFor]="colorMenu"  matTooltip="Change Color">
+                                <button mat-icon-button class="example-icon favorite-icon icon" [matMenuTriggerFor]="colorMenu"  matTooltip="Change Color">
                                     <mat-menu #colorMenu="matMenu" yPosition="above">
                                         <div class="get_note_color_menu">
                                             <span class="colors" (click)="ChangeColor(colors[i].color,note)"  [style.background-color]="colors[i].color"
@@ -135,13 +135,13 @@
                                     </mat-menu>
                                     <mat-icon mat-list-icon class="material-icons-outlined">color_lens</mat-icon>
                                 </button>
-                                <button mat-icon-button class="example-icon favorite-icon">
+                                <button mat-icon-button class="example-icon favorite-icon icon">
                                     <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="Add Image">image</mat-icon>
                                 </button>
-                                <button mat-icon-button class="example-icon favorite-icon" glow-icon>
+                                <button mat-icon-button class="example-icon favorite-icon icon" (click)="ToggleAarchive(note);" glow-icon>
                                     <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="Archive">archive</mat-icon>
                                 </button>
-                                <button mat-icon-button class="example-icon favorite-icon" [matMenuTriggerFor]="moreMenu">
+                                <button mat-icon-button class="example-icon favorite-icon icon" [matMenuTriggerFor]="moreMenu">
                                     <mat-menu #moreMenu="matMenu">                                
                                         <button (click)="DeleteNote(note);" mat-menu-item>Delete note</button>
                                         <button mat-menu-item>Add label</button>

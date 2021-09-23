@@ -10,10 +10,10 @@
                     <div id="description" #description contenteditable="false" aria-multiline="true" role="textbox"
                         class="font n1" dir="ltr" [style.background-color]="note.color">{{note.description}}</div>
                     <div fxLayout="row" >                         
-                        <button mat-icon-button class="example-icon favorite-icon icon-glower icon">
+                        <button mat-icon-button class="example-icon favorite-icon icon-glower icon" (click)="DeleteNoteForever(note)">
                             <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="delete_forever">delete_forever</mat-icon>
                         </button>
-                        <button mat-icon-button class="example-icon favorite-icon icon-glower icon" glow-icon>
+                        <button mat-icon-button class="example-icon favorite-icon icon-glower icon" (click)="RestoreNote(note)">
                             <mat-icon mat-list-icon class="material-icons-outlined"  matTooltip="restore">restore</mat-icon>
                         </button>                        
                     </div>   
