@@ -102,6 +102,18 @@ export class NotesServiceService {
   }
 
 
+  //// TrashNotes
+
+  GetAllTrashNotes(token: any,data: any) {
+    let params = {
+      UserId: this.user.key,
+    };
+    this.getToken()
+    console.log(this.header);
+    return this.httpService.put(`${environment.baseUrl}/api/TrashNotes?UserId=${this.user.key}`,null,true,this.header);
+  }
+
+
 
 
 

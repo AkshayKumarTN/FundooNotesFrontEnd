@@ -1,1 +1,24 @@
-<p>trash-notes works!</p>
+<div class="Notes-Pin-Unpin" fxLayout="column" fxLayoutGap="80px">
+    <div style="display: flex;flex-wrap: wrap;padding: 10px 180px;justify-content: start;" class="main-getnote" >
+        <div class="neVct-LS81yb-tJHJj" >TRASH</div>
+        <div class="note-container" *ngFor="let note of trashNotes;">
+            <mat-card class="card" [style.background-color]="note.color">
+                <div  class="mainBlock" [style.background-color]="note.color">
+                    <div fxLayout="row" fxLayoutAlign="space-between center">
+                        <strong class="title">{{note.title}}</strong>  
+                    </div>
+                    <div id="description" #description contenteditable="false" aria-multiline="true" role="textbox"
+                        class="font n1" dir="ltr" [style.background-color]="note.color">{{note.description}}</div>
+                    <div fxLayout="row" >                         
+                        <button mat-icon-button class="example-icon favorite-icon icon-glower icon">
+                            <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="delete_forever">delete_forever</mat-icon>
+                        </button>
+                        <button mat-icon-button class="example-icon favorite-icon icon-glower icon" glow-icon>
+                            <mat-icon mat-list-icon class="material-icons-outlined"  matTooltip="restore">restore</mat-icon>
+                        </button>                        
+                    </div>   
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</div>
