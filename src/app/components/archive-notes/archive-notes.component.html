@@ -41,13 +41,16 @@
                         <button mat-icon-button class="example-icon favorite-icon">
                             <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="collaborater">person_add</mat-icon>
                         </button>
-                        <button mat-icon-button class="example-icon favorite-icon" [matMenuTriggerFor]="Color">
-                            <mat-menu #Color="matMenu" yPosition="above">
-                                <span class="colors">
-                                    <mat-icon mat-list-icon >done</mat-icon>
-                                </span>
+                        <button mat-icon-button class="example-icon favorite-icon" [matMenuTriggerFor]="colorMenu"  matTooltip="Change Color">
+                            <mat-menu #colorMenu="matMenu" yPosition="above">
+                                <div class="get_note_color_menu">
+                                    <span class="colors" (click)="ChangeColor(colors[i].color,note)"  [style.background-color]="colors[i].color"
+                                            matTooltip="{{colors[i].toolTip}}" *ngFor="let color of colors;let i=index">
+                                            <mat-icon mat-list-icon *ngIf="colors[i].icon">done</mat-icon>
+                                    </span>
+                                </div>
                             </mat-menu>
-                            <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="Change Color">color_lens</mat-icon>
+                            <mat-icon mat-list-icon class="material-icons-outlined">color_lens</mat-icon>
                         </button>
                         <button mat-icon-button class="example-icon favorite-icon">
                             <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="Add Image">image</mat-icon>

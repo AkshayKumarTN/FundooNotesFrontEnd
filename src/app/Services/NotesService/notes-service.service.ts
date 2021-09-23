@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpServiceService } from '../HttpService/http-service.service';
 import { environment } from 'src/environments/environment';
+import { HttpParams } from '@angular/common/http';
 
 
 @Injectable({
@@ -22,6 +23,7 @@ export class NotesServiceService {
       Pin : data.pin,
       Archieve : data.archive,
       UserId: this.user.key,
+      Color : data.color
     };
     this.getToken()
     console.log(this.header);
@@ -67,6 +69,18 @@ export class NotesServiceService {
     this.getToken()
     console.log(this.header);
     return this.httpService.put(`${environment.baseUrl}/api/UnArchive?noteId=${data.noteId}`,null,true,this.header);
+  }
+
+  ChangeColor(token: any,noteId: any,Color : string) {
+    this.getToken()
+    console.log(noteId);
+    console.log(Color);
+    console.log(this.header);
+    let params = new HttpParams()
+        .set('NoteId',noteId)
+        .set('Color',Color);
+
+    return this.httpService.put(`${environment.baseUrl}/api/NoteColor?noteId=${noteId}&color=${Color}`,null,true,this.header);
   }
 
 

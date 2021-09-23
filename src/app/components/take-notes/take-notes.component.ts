@@ -18,7 +18,84 @@ export class TakeNotesComponent implements OnInit {
   title='';
   description='';
   isOpen = true;
+  userColor: string = "white";
   token: any;
+  colors: any[] = [
+    {
+      "color": "#fff",
+      "toolTip": "default",
+      "icon": true
+    },
+    {
+      "color": "#F28B82",
+      "toolTip": "Red",
+      "icon": false
+    },
+    {
+      "color": "#FBBC04",
+      "toolTip": "Orange"
+    },
+    {
+      "color": "#FFF475",
+      "toolTip": "Yellow",
+      "icon": false
+    },
+    {
+      "color": "#CCFF90",
+      "toolTip": "Green",
+      "icon": false
+    },
+    {
+      "color": "#A7FFEB",
+      "toolTip": "Teal",
+      "icon": false
+    },
+    {
+      "color": "#CBF0F8",
+      "toolTip": "Blue",
+      "icon": false
+    },
+    {
+      "color": "#AECBFA",
+      "toolTip": "Dark Blue",
+      "icon": false
+    },
+    {
+      "color": "#D7AEFB",
+      "toolTip": "Purple",
+      "icon": false
+    },
+    {
+      "color": "#FDCFE8",
+      "toolTip": "Pink",
+      "icon": false
+    },
+    {
+      "color": "#E6C9A8",
+      "toolTip": "Brown",
+      "icon": false
+    },
+    {
+      "color": "#E8EAED",
+      "toolTip": "Gray",
+      "icon": false
+    }
+  ];
+  reminders: any[] = [
+    {
+      "Text": "Later Today",
+      "Time": "8:00 PM"
+    },
+    {
+      "Text": "Tommorow",
+      "Time": "8:00 AM"
+    },
+    {
+      "Text": "Next Week",
+      "Time": "8:00 AM"
+    }
+  ];
+
 
   click() {
     this.isOpen = true;
@@ -38,7 +115,8 @@ export class TakeNotesComponent implements OnInit {
       Title: this.title,
       Description: this.description,
       pin : this.pin,
-      archive : this.archive
+      archive : this.archive,
+      color : this.userColor
     }
     console.log(data)
     console.log(" add note data ", data);
@@ -65,8 +143,11 @@ export class TakeNotesComponent implements OnInit {
       });
       this.title = "";
       this.description = "";
+      this.userColor = "white";
       this.fullEdit = false;
+      window.location.reload();
     } else {
+      this.userColor = "white";
         this.fullEdit = false;
       }
   }
@@ -85,4 +166,10 @@ export class TakeNotesComponent implements OnInit {
     this.archive = !this.archive;
   }
 
+  ChangeColor(color: any) {
+    this.userColor = color;
+    for (var val of this.colors)
+      val.icon = val.color == color ? true : false;
+  }
 }
+
