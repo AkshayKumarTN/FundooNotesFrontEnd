@@ -84,7 +84,7 @@
                     </button>
                     <p class="navName  " *ngIf="isExpandable">Notes</p>
                 </div>
-                <div class="navlist" (mouseover)="isExpandable=true" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" mat-list-item>
+                <div class="navlist" (mouseover)="isExpandable=true" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" mat-list-item routerLink="/dashboard/remainder">
                     <button class="navBtn btnPosition" mat-icon-button (mouseover)="isExpandable=true">
                         <img src="/assets/download.svg">
                     </button>
@@ -102,7 +102,7 @@
                     </button>
                     <p class="navName " *ngIf="isExpandable">Archive</p>
                 </div>
-                <div class="navlist"  fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" mat-list-item>
+                <div class="navlist"  fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" mat-list-item routerLink="/dashboard/trash">
                     <button class="navBtn btnPosition" mat-icon-button (mouseover)="isExpandable=true">
                         <img src="/assets/delete.svg">
                     </button>

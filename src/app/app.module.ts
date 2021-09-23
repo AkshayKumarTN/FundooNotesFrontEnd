@@ -12,6 +12,8 @@ import { MaterialModule } from './material/material.module';
 import { TakeNotesComponent } from './components/take-notes/take-notes.component';
 import { NotesComponent } from './components/notes/notes.component';
 import { ArchiveNotesComponent } from '../app/components/archive-notes/archive-notes.component';
+import { TrashNotesComponent } from './components/trash-notes/trash-notes.component';
+import { RemainderNotesComponent } from './components/remainder-notes/remainder-notes.component';
 
 
 
@@ -28,6 +30,8 @@ import { ArchiveNotesComponent } from '../app/components/archive-notes/archive-n
     TakeNotesComponent,
     NotesComponent,
     ArchiveNotesComponent,
+    TrashNotesComponent,
+    RemainderNotesComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

@@ -7,6 +7,8 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NotesComponent } from './components/notes/notes.component';
 import { ArchiveNotesComponent } from './components/archive-notes/archive-notes.component';
+import { RemainderNotesComponent } from './components/remainder-notes/remainder-notes.component';
+import { TrashNotesComponent } from './components/trash-notes/trash-notes.component';
 
 var data =localStorage.getItem('ForgotPassword');
 var token=JSON.parse(data!).Token;
@@ -21,7 +23,9 @@ const routes: Routes = [
 
     { path: '', redirectTo: "notes", pathMatch: "full" },
     { path: 'notes', component: NotesComponent },
-    {path: 'archive',component: ArchiveNotesComponent}
+    {path: 'archive',component: ArchiveNotesComponent},
+    { path: 'remainder', component: RemainderNotesComponent },
+    {path: 'trash',component: TrashNotesComponent}
   ]
 }
 ];
