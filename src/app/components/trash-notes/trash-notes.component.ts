@@ -42,6 +42,7 @@ export class TrashNotesComponent implements OnInit {
         console.log(response);
         if(response.success == true)
         {
+          this.GetAllNotes();
           this.snackBar.open(`${response.message}`, '', {
             duration: 4000,
             verticalPosition: 'bottom',
@@ -58,7 +59,7 @@ export class TrashNotesComponent implements OnInit {
           horizontalPosition: 'left'
         });
       })
-    window.location.reload();
+    // window.location.reload();
   }
 
   RestoreNote(note : any){
@@ -70,6 +71,7 @@ export class TrashNotesComponent implements OnInit {
         console.log(response);
         if(response.success == true)
         {
+          this.GetAllNotes();
           this.snackBar.open(`${response.message}`, '', {
             duration: 4000,
             verticalPosition: 'bottom',
@@ -86,7 +88,7 @@ export class TrashNotesComponent implements OnInit {
           horizontalPosition: 'left'
         });
       })
-    window.location.reload();
+    // window.location.reload();
   }
 
 }

@@ -106,6 +106,23 @@ export class NotesServiceService {
     return this.httpService.put(`${environment.baseUrl}/api/SetReminder?noteId=${noteId}&reminder=${remider}`,null,true,this.header);
   }
 
+  //// RemainderNotes
+
+  GetAllRemainderNotes(token: any,data: any) {
+    let params = {
+      UserId: this.user.key,
+    };
+    this.getToken()
+    console.log(this.header);
+    return this.httpService.put(`${environment.baseUrl}/api/ReminderNotes?UserId=${this.user.key}`,null,true,this.header);
+  }
+
+  RemoveReminder(token: any,data: any) {
+    this.getToken()
+    console.log(this.header);
+    return this.httpService.put(`${environment.baseUrl}/api/DeleteReminder?noteId=${data.noteId}`,null,true,this.header);
+  }
+
 
   //// TrashNotes
 

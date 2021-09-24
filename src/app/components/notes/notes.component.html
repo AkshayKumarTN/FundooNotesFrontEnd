@@ -11,41 +11,41 @@
                     <div fxLayout="row" fxLayoutAlign="space-between center">
                         <strong class="title">{{note.title}}</strong>  
                         <div class="pin-class">
-                            <button class="buttons" *ngIf="note.pin" (click)="UnPinIt(note); " mat-button
-                            mat-icon-button>
+                            <button class="buttons" *ngIf="note.pin" (click)="UnPinIt(note); " mat-icon-button>
                             <span matTooltip="pin note">
-                                <img class="icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICA8cGF0aCBmaWxsPSJub25lIiBkPSJNMCAwaDI0djI0SDB6Ii8+CiAgPHBhdGggZmlsbD0iIzAwMCIgZD0iTTE3IDRhMiAyIDAgMCAwLTItMkg5Yy0xLjEgMC0yIC45LTIgMnY3bC0yIDN2Mmg2djVsMSAxIDEtMXYtNWg2di0ybC0yLTNWNHoiLz4KPC9zdmc+Cg==">
+                                <img class="icon icon-glower" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICA8cGF0aCBmaWxsPSJub25lIiBkPSJNMCAwaDI0djI0SDB6Ii8+CiAgPHBhdGggZmlsbD0iIzAwMCIgZD0iTTE3IDRhMiAyIDAgMCAwLTItMkg5Yy0xLjEgMC0yIC45LTIgMnY3bC0yIDN2Mmg2djVsMSAxIDEtMXYtNWg2di0ybC0yLTNWNHoiLz4KPC9zdmc+Cg==">
                             </span>
                             </button> 
                         </div>    
 
                     </div>
                     <div id="description" #description contenteditable="false" aria-multiline="true" role="textbox"
-                        class="font n1" dir="ltr" [style.background-color]="note.color">{{note.description}}</div>
+                        class="font n1" dir="ltr" [style.background-color]="note.color">
+                        {{note.description}}
+                    </div>
+                    <div *ngIf="note.reminder!=null" class="reminderLabel">
+                        <mat-icon mat-list-icon class="material-icons-outlined">watch_later</mat-icon>
+                        <p>{{note.reminder}}</p>
+                        <mat-icon role="button" mat-list-icon class="material-icons-outlined cursor icon icon-glower-cursor"(click)="RemoveReminder(note)" mat-icon-button>close</mat-icon>
+                    </div>
+
+                       
                     <div fxLayout="row" fxLayoutAlign="space-around end" > 
 
-                        <button mat-icon-button class="example-icon favorite-icon icon" [matMenuTriggerFor]="Remainder">                            
+                        <button mat-icon-button class="example-icon favorite-icon icon icon-glower" [matMenuTriggerFor]="Remainder">
                             <mat-menu #Remainder="matMenu" class="r-option">
                                 <p class="r-par">Remainder:</p>
-                                <button mat-menu-item class="remainder-but" fxLayout="row" fxLayoutGap="20px" >
-                                  <p>Later today</p>
-                                  <p>8:00PM</p>
-                                </button>
-                                <button mat-menu-item class="remainder-but" fxLayout="row" fxLayoutGap="20px">
-                                  <p>Tomorrow</p>
-                                  <p>8:00AM</p>
-                                </button>
-                                <button mat-menu-item class="remainder-but" fxLayout="row" fxLayoutGap="20px">
-                                  <p>Next Week</p>
-                                  <p>{{ note.reminder }}</p>
+                                <button mat-menu-item class="remainder-but" fxLayout="row" fxLayoutGap="20px" *ngFor="let reminder of reminders;" (click)="AddReminder(note,reminder)">
+                                  <p>{{reminder.Text}}</p>
+                                  <p>{{reminder.Time}}</p>
                                 </button>
                             </mat-menu>
                             <mat-icon mat-list-icon class="material-icons-outlined"matTooltip="Remind me">notifications_none</mat-icon>
                         </button>
-                        <button mat-icon-button class="example-icon favorite-icon icon">
+                        <button mat-icon-button class="example-icon favorite-icon icon icon-glower">
                             <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="collaborater">person_add</mat-icon>
                         </button>
-                        <button mat-icon-button class="example-icon favorite-icon icon" [matMenuTriggerFor]="colorMenu"  matTooltip="Change Color">
+                        <button mat-icon-button class="example-icon favorite-icon icon icon-glower" [matMenuTriggerFor]="colorMenu"  matTooltip="Change Color">
                             <mat-menu #colorMenu="matMenu" yPosition="above">
                                 <div class="get_note_color_menu">
                                     <span class="colors" (click)="ChangeColor(colors[i].color,note)"  [style.background-color]="colors[i].color"
@@ -56,13 +56,13 @@
                             </mat-menu>
                             <mat-icon mat-list-icon class="material-icons-outlined">color_lens</mat-icon>
                         </button>
-                        <button mat-icon-button class="example-icon favorite-icon icon">
+                        <button mat-icon-button class="example-icon favorite-icon icon icon-glower">
                             <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="Add Image">image</mat-icon>
                         </button>
-                        <button mat-icon-button class="example-icon favorite-icon icon" (click)="ToggleAarchive(note);" glow-icon>
+                        <button mat-icon-button class="example-icon favorite-icon icon icon-glower" (click)="ToggleAarchive(note);" glow-icon>
                             <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="Archive">archive</mat-icon>
                         </button>
-                        <button mat-icon-button class="example-icon favorite-icon icon" [matMenuTriggerFor]="moreMenu">
+                        <button mat-icon-button class="example-icon favorite-icon icon icon-glower" [matMenuTriggerFor]="moreMenu">
                             <mat-menu #moreMenu="matMenu">                                
                                 <button (click)="DeleteNote(note);" mat-menu-item>Delete note</button>
                                 <button mat-menu-item>Add label</button>
@@ -88,10 +88,9 @@
                     <div fxLayout="row" fxLayoutAlign="space-between center">
                         <strong class="title">{{note.title}}</strong>  
                         <div class="pin-class">
-                            <button *ngIf="!note.pin" (click)="PinIt(note);" mat-button
-                            mat-icon-button>
+                            <button *ngIf="!note.pin" (click)="PinIt(note);"  mat-icon-button>
                             <span matTooltip="pin note">
-                                <img class="icon" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICA8cGF0aCBmaWxsPSJub25lIiBkPSJNMCAwaDI0djI0SDB6Ii8+CiAgPHBhdGggZmlsbD0iIzAwMCIgZD0iTTE3IDR2N2wyIDN2MmgtNnY1bC0xIDEtMS0xdi01SDV2LTJsMi0zVjRjMC0xLjEuOS0yIDItMmg2YzEuMTEgMCAyIC44OSAyIDJ6TTkgNHY3Ljc1TDcuNSAxNGg5TDE1IDExLjc1VjRIOXoiLz4KPC9zdmc+Cg==">
+                                <img class="icon icon-glower" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICA8cGF0aCBmaWxsPSJub25lIiBkPSJNMCAwaDI0djI0SDB6Ii8+CiAgPHBhdGggZmlsbD0iIzAwMCIgZD0iTTE3IDR2N2wyIDN2MmgtNnY1bC0xIDEtMS0xdi01SDV2LTJsMi0zVjRjMC0xLjEuOS0yIDItMmg2YzEuMTEgMCAyIC44OSAyIDJ6TTkgNHY3Ljc1TDcuNSAxNGg5TDE1IDExLjc1VjRIOXoiLz4KPC9zdmc+Cg==">
                             </span>
                             </button>
                         </div>    
@@ -99,11 +98,18 @@
                     </div>
                 
                         <div id="description" #description contenteditable="false" aria-multiline="true" role="textbox"
-                            class="font n1" dir="ltr" [style.background-color]="note.color">{{note.description}}</div>
+                            class="font n1" dir="ltr" [style.background-color]="note.color">
+                            {{note.description}}
+                        </div>
+                        <div *ngIf="note.reminder!=null" class="reminderLabel">
+                            <mat-icon mat-list-icon class="material-icons-outlined">watch_later</mat-icon>
+                            <p>{{note.reminder}}</p>
+                            <mat-icon role="button" mat-list-icon class="material-icons-outlined cursor icon icon-glower-cursor"(click)="RemoveReminder(note)" mat-icon-button>close</mat-icon>
+                        </div>
                         
                             <div fxLayout="row" fxLayoutAlign="space-around end" > 
 
-                                <button mat-icon-button class="example-icon favorite-icon icon" [matMenuTriggerFor]="Remainder">
+                                <button mat-icon-button class="example-icon favorite-icon icon icon-glower" [matMenuTriggerFor]="Remainder">
                                     <mat-menu #Remainder="matMenu" class="r-option">
                                         <p class="r-par">Remainder:</p>
                                         <button mat-menu-item class="remainder-but" fxLayout="row" fxLayoutGap="20px" *ngFor="let reminder of reminders;" (click)="AddReminder(note,reminder)">
@@ -113,10 +119,10 @@
                                     </mat-menu>
                                     <mat-icon mat-list-icon class="material-icons-outlined"matTooltip="Remind me">notifications_none</mat-icon>
                                 </button>
-                                <button mat-icon-button class="example-icon favorite-icon icon">
+                                <button mat-icon-button class="example-icon favorite-icon icon icon-glower">
                                     <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="collaborater">person_add</mat-icon>
                                 </button>
-                                <button mat-icon-button class="example-icon favorite-icon icon" [matMenuTriggerFor]="colorMenu"  matTooltip="Change Color">
+                                <button mat-icon-button class="example-icon favorite-icon icon icon-glower" [matMenuTriggerFor]="colorMenu"  matTooltip="Change Color">
                                     <mat-menu #colorMenu="matMenu" yPosition="above">
                                         <div class="get_note_color_menu">
                                             <span class="colors" (click)="ChangeColor(colors[i].color,note)"  [style.background-color]="colors[i].color"
@@ -127,13 +133,13 @@
                                     </mat-menu>
                                     <mat-icon mat-list-icon class="material-icons-outlined">color_lens</mat-icon>
                                 </button>
-                                <button mat-icon-button class="example-icon favorite-icon icon">
+                                <button mat-icon-button class="example-icon favorite-icon icon icon-glower">
                                     <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="Add Image">image</mat-icon>
                                 </button>
-                                <button mat-icon-button class="example-icon favorite-icon icon" (click)="ToggleAarchive(note);" glow-icon>
+                                <button mat-icon-button class="example-icon favorite-icon icon icon-glower" (click)="ToggleAarchive(note);" glow-icon>
                                     <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="Archive">archive</mat-icon>
                                 </button>
-                                <button mat-icon-button class="example-icon favorite-icon icon" [matMenuTriggerFor]="moreMenu">
+                                <button mat-icon-button class="example-icon favorite-icon icon icon-glower" [matMenuTriggerFor]="moreMenu">
                                     <mat-menu #moreMenu="matMenu">                                
                                         <button (click)="DeleteNote(note);" mat-menu-item>Delete note</button>
                                         <button mat-menu-item>Add label</button>

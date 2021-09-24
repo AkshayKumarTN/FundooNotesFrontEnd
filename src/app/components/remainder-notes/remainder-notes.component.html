@@ -1,1 +1,61 @@
-<p>remainder-notes works!</p>
+<div class="Notes-Pin-Unpin" fxLayout="column" fxLayoutGap="80px">
+    <div style="display: flex;flex-wrap: wrap;padding: 10px 180px;justify-content: start;" class="main-getnote" >
+        <div class="neVct-LS81yb-tJHJj" >REMAINDER</div>
+        <div class="note-container" *ngFor="let note of remainderNotes;">
+            <mat-card class="card" [style.background-color]="note.color">
+                <div  class="mainBlock" [style.background-color]="note.color">
+                    <div fxLayout="row" fxLayoutAlign="space-between center">
+                        <strong class="title">{{note.title}}</strong>  
+                        <div class="pin-class">
+                            <button *ngIf="!note.pin" (click)="PinIt(note);"  mat-icon-button>
+                            <span matTooltip="pin archive note">
+                                <img class="icon icon-glower" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICA8cGF0aCBmaWxsPSJub25lIiBkPSJNMCAwaDI0djI0SDB6Ii8+CiAgPHBhdGggZmlsbD0iIzAwMCIgZD0iTTE3IDR2N2wyIDN2MmgtNnY1bC0xIDEtMS0xdi01SDV2LTJsMi0zVjRjMC0xLjEuOS0yIDItMmg2YzEuMTEgMCAyIC44OSAyIDJ6TTkgNHY3Ljc1TDcuNSAxNGg5TDE1IDExLjc1VjRIOXoiLz4KPC9zdmc+Cg==">
+                            </span>
+                            </button>
+                        </div>    
+
+                    </div>
+                    <div id="description" #description contenteditable="false" aria-multiline="true" role="textbox"
+                        class="font n1" dir="ltr" [style.background-color]="note.color">{{note.description}}</div>
+
+                    <div *ngIf="note.reminder!=null" class="reminderLabel">
+                        <mat-icon mat-list-icon class="material-icons-outlined">watch_later</mat-icon>
+                        <p>{{note.reminder}}</p>
+                        <mat-icon role="button" mat-list-icon class="material-icons-outlined cursor icon icon-glower-cursor"(click)="RemoveReminder(note)" mat-icon-button>close</mat-icon>
+                    </div>
+
+                    <div fxLayout="row" fxLayoutAlign="space-around end" > 
+
+                        <button mat-icon-button class="example-icon favorite-icon icon icon-glower" >
+                            <mat-icon mat-list-icon class="material-icons-outlined"matTooltip="Remove Reminder" (click)="RemoveReminder(note)">done</mat-icon>
+                        </button>
+                        <button mat-icon-button class="example-icon favorite-icon icon icon-glower">
+                            <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="collaborater">person_add</mat-icon>
+                        </button>
+                        <button mat-icon-button class="example-icon favorite-icon icon icon-glower"  matTooltip="Change Color">
+                            
+                            <mat-icon mat-list-icon class="material-icons-outlined">color_lens</mat-icon>
+                        </button>
+                        <button mat-icon-button class="example-icon favorite-icon icon icon-glower">
+                            <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="Add Image">image</mat-icon>
+                        </button>
+                        <button mat-icon-button class="example-icon favorite-icon icon icon-glower" glow-icon>
+                            <mat-icon mat-list-icon class="material-icons-outlined" (click)="ToggleAarchive(note)"  matTooltip="UnAarchive">archive</mat-icon>
+                        </button>
+                        <button mat-icon-button class="example-icon favorite-icon icon icon-glower" [matMenuTriggerFor]="moreMenu">
+                            <mat-menu #moreMenu="matMenu">                                
+                                <button (click)="DeleteNote(note);" mat-menu-item>Delete note</button>
+                                <button mat-menu-item>Add label</button>
+                            </mat-menu>
+                            <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="More">more_vert</mat-icon>
+                        </button>
+                    </div>   
+
+                </div>
+
+
+
+            </mat-card>
+        </div>
+    </div>
+</div>

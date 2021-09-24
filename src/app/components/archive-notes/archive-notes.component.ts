@@ -123,6 +123,7 @@ export class ArchiveNotesComponent implements OnInit {
         console.log(response);
         if(response.success == true)
         {
+          this.GetAllNotes();
           this.snackBar.open(`${response.message}`, '', {
             duration: 4000,
             verticalPosition: 'bottom',
@@ -139,7 +140,7 @@ export class ArchiveNotesComponent implements OnInit {
           horizontalPosition: 'left'
         });
       })
-    window.location.reload();
+    // window.location.reload();
     
   }
 
@@ -151,6 +152,7 @@ export class ArchiveNotesComponent implements OnInit {
         console.log(response);
         if(response.success == true)
         {
+          this.GetAllNotes();
           this.snackBar.open(`${response.message}`, '', {
             duration: 4000,
             verticalPosition: 'bottom',
@@ -167,7 +169,7 @@ export class ArchiveNotesComponent implements OnInit {
           horizontalPosition: 'left'
         });
       })
-    //window.location.reload();
+    // window.location.reload();
 
   }
 
@@ -180,6 +182,7 @@ export class ArchiveNotesComponent implements OnInit {
         console.log(response);
         if(response.success == true)
         {
+          this.GetAllNotes();
           this.snackBar.open(`${response.message}`, '', {
             duration: 4000,
             verticalPosition: 'bottom',
@@ -196,7 +199,7 @@ export class ArchiveNotesComponent implements OnInit {
           horizontalPosition: 'left'
         });
       })
-    window.location.reload();
+    // window.location.reload();
   }
 
   ChangeColor(color: string, note : any) {
@@ -211,6 +214,7 @@ export class ArchiveNotesComponent implements OnInit {
         console.log(response);
         if(response.success == true)
         {
+          this.GetAllNotes();
           this.snackBar.open(`${response.message}`, '', {
             duration: 4000,
             verticalPosition: 'bottom',
@@ -227,7 +231,7 @@ export class ArchiveNotesComponent implements OnInit {
           horizontalPosition: 'left'
         });
       })
-      window.location.reload();
+      // window.location.reload();
 
   }
 
@@ -240,6 +244,7 @@ export class ArchiveNotesComponent implements OnInit {
         console.log(response);
         if(response.success == true)
         {
+          this.GetAllNotes();
           this.snackBar.open(`${response.message}`, '', {
             duration: 4000,
             verticalPosition: 'bottom',
@@ -256,7 +261,37 @@ export class ArchiveNotesComponent implements OnInit {
           horizontalPosition: 'left'
         });
       })
-    window.location.reload();
+    // window.location.reload();
+  }
+  RemoveReminder(note:any)
+  {
+    let updateObject = {
+      noteId: note.noteId
+    };
+    let result: any = '';
+      this.noteService.RemoveReminder(this.token,updateObject).subscribe((response: any) => {
+        console.log(response);
+        if(response.success == true)
+        {
+          this.GetAllNotes();
+          this.snackBar.open(`${response.message}`, '', {
+            duration: 4000,
+            verticalPosition: 'bottom',
+            horizontalPosition: 'left'
+          });
+
+        }
+        
+      },(error: HttpErrorResponse) => {
+        console.log(error.error.message);
+        this.snackBar.open(`${error.error.message}`, '', {
+          duration: 4000,
+          verticalPosition: 'bottom',
+          horizontalPosition: 'left'
+        });
+      })
+    // window.location.reload();
+
   }
 
 }

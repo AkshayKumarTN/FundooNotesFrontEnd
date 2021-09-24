@@ -274,6 +274,17 @@
     border: 1px solid black;
 }
 
+.icon-glower
+{
+    cursor : pointer;
+    
+}
+.icon-glower:hover
+{
+    background-color: #dfdcd7;
+    border-radius : 20px;
+}
+
 @media screen and (max-width: 370px){
     .prop{
         margin: auto;
