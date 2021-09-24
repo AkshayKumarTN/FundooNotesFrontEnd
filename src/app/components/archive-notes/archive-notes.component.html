@@ -36,7 +36,7 @@
                             </mat-menu>
                             <mat-icon mat-list-icon class="material-icons-outlined"matTooltip="Remind me">notifications_none</mat-icon>
                         </button>
-                        <button mat-icon-button class="example-icon favorite-icon icon icon-glower">
+                        <button mat-icon-button class="example-icon favorite-icon icon icon-glower" (click)="openDialog()">
                             <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="collaborater">person_add</mat-icon>
                         </button>
                         <button mat-icon-button class="example-icon favorite-icon icon icon-glower" [matMenuTriggerFor]="colorMenu"  matTooltip="Change Color">

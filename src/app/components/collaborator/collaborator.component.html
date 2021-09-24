@@ -1,0 +1,32 @@
+<div class="mainCollab" >
+    <h2 mat-dialog-title>Collaborator</h2>
+    <mat-divider></mat-divider>
+    <mat-dialog-content [formGroup]="AddCollaboratorForm">
+        <div class="collaborators">
+            <div class="user">
+                <img src="../../../assets/emplpyee.png" class="profilePic">
+                <div class="UserName">
+                    <h4 style="height:6px">{{UserFirstName}} {{UserLastName}}
+                        <span style="font-style: italic;font-weight: lighter;">(Owner)</span>
+                    </h4>
+                    <p>{{UserEmail}}</p>
+                </div>
+            </div>
+            <div class="user">
+                <span class="add">
+                    <mat-icon class="addperson">person_add</mat-icon>
+                </span>
+                <input placeholder="Person or email to share with" formControlName="email" class="person">
+            </div>
+        </div>
+
+    </mat-dialog-content>
+</div>
+<div >
+    <mat-dialog-actions >
+        <div class="action_buttons">
+            <button mat-button style="color: #454545;" (click)="close()">Close</button>
+            <button mat-button style="color: #454545;">Save</button>
+        </div>
+    </mat-dialog-actions>
+</div> 

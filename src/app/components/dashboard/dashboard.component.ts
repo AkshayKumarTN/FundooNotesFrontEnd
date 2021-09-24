@@ -55,7 +55,7 @@ export class DashboardComponent implements OnInit {
 
   logout() {
     
-    //localStorage.clear();
+    localStorage.removeItem("FundooNotes");
     this.routers.navigateByUrl('login');
   }
 

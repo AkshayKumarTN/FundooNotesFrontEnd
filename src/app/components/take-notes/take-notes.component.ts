@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpErrorResponse } from '@angular/common/http';
 import { flatten } from '@angular/compiler';
+import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CollaboratorComponent } from '../collaborator/collaborator.component';
 
 @Component({
   selector: 'app-take-notes',
@@ -105,7 +107,8 @@ export class TakeNotesComponent implements OnInit {
   constructor(
     private note: NotesServiceService,
      private activeRoute: ActivatedRoute,
-     private snackBar: MatSnackBar
+     private snackBar: MatSnackBar,
+     public dialog: MatDialog
      ) { }
 
   ngOnInit(): void {
@@ -177,5 +180,17 @@ export class TakeNotesComponent implements OnInit {
     this.noteReminder = remider.Text +", "+remider.Time;
     
   }
+
+  openDialog() {
+
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    this.dialog.open(CollaboratorComponent, dialogConfig);
+  }
+
+
 }
 

@@ -14,6 +14,7 @@ import { NotesComponent } from './components/notes/notes.component';
 import { ArchiveNotesComponent } from '../app/components/archive-notes/archive-notes.component';
 import { TrashNotesComponent } from './components/trash-notes/trash-notes.component';
 import { RemainderNotesComponent } from './components/remainder-notes/remainder-notes.component';
+import { CollaboratorComponent } from './components/collaborator/collaborator.component';
 
 
 
@@ -32,6 +33,7 @@ import { RemainderNotesComponent } from './components/remainder-notes/remainder-
     ArchiveNotesComponent,
     TrashNotesComponent,
     RemainderNotesComponent,
+    CollaboratorComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

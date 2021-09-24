@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NotesServiceService } from 'src/app/Services/NotesService/notes-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpErrorResponse } from '@angular/common/http';
+import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CollaboratorComponent } from '../collaborator/collaborator.component';
 
 @Component({
   selector: 'app-remainder-notes',
@@ -77,7 +79,8 @@ export class RemainderNotesComponent implements OnInit {
 
   constructor(
     private noteService: NotesServiceService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -248,6 +251,16 @@ export class RemainderNotesComponent implements OnInit {
       })
     // window.location.reload();
 
+  }
+
+  openDialog() {
+
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    this.dialog.open(CollaboratorComponent, dialogConfig);
   }
 
 }
