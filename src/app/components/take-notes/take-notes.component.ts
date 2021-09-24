@@ -19,7 +19,7 @@ export class TakeNotesComponent implements OnInit {
   description='';
   isOpen = true;
   userColor: string = "white";
-  noteReminder : string ="NULL";
+  noteReminder : string ="";
   token: any;
   colors: any[] = [
     {

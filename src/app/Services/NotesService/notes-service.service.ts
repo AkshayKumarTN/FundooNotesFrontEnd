@@ -123,6 +123,17 @@ export class NotesServiceService {
     return this.httpService.put(`${environment.baseUrl}/api/DeleteReminder?noteId=${data.noteId}`,null,true,this.header);
   }
 
+  /// Labels
+
+  GetAllLabels(token: any,data: any) {
+    let params = {
+      UserId: this.user.key,
+    };
+    this.getToken()
+    console.log(this.header);
+    return this.httpService.get(`${environment.baseUrl}/api/LabelName?UserId=${this.user.key}`,null,true,this.header);
+  }
+
 
   //// TrashNotes
 
