@@ -4,6 +4,9 @@
         <div class="note-container" *ngFor="let note of trashNotes;">
             <mat-card class="card" [style.background-color]="note.color">
                 <div  class="mainBlock" [style.background-color]="note.color">
+                    <div *ngIf=" note.image != null" style="padding-bottom: 0px; margin-bottom: 0px;">
+                        <img src='{{note.image}}' alt='' width="300" height="200">
+                    </div>
                     <div fxLayout="row" fxLayoutAlign="space-between center">
                         <strong class="title">{{note.title}}</strong>  
                     </div>

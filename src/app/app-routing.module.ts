@@ -6,7 +6,7 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NotesComponent } from './components/notes/notes.component';
-import { ArchiveNotesComponent } from './components/archive-notes/archive-notes.component';
+import { ArchiveNotesComponent } from './archive-notes/archive-notes.component';
 import { RemainderNotesComponent } from './components/remainder-notes/remainder-notes.component';
 import { TrashNotesComponent } from './components/trash-notes/trash-notes.component';
 

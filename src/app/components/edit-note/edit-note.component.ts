@@ -1,24 +1,43 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,Inject,inject, OnInit } from '@angular/core';
 import { NotesServiceService } from 'src/app/Services/NotesService/notes-service.service';
+import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpErrorResponse } from '@angular/common/http';
-import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { CollaboratorComponent } from '../collaborator/collaborator.component';
-import { EditNoteComponent } from '../edit-note/edit-note.component';
-
-
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ArchiveNotesComponent } from '../../archive-notes/archive-notes.component';
+import { NotesComponent } from '../notes/notes.component';
+import { RemainderNotesComponent } from '../remainder-notes/remainder-notes.component';
 
 @Component({
-  selector: 'app-notes',
-  templateUrl: './notes.component.html',
-  styleUrls: ['./notes.component.scss']
+  selector: 'app-edit-note',
+  templateUrl: './edit-note.component.html',
+  styleUrls: ['./edit-note.component.scss']
 })
-export class NotesComponent implements OnInit {
+export class EditNoteComponent implements OnInit {
+  note;
 
-  token: any;
+  constructor( 
+    private noteService: NotesServiceService,
+     private activeRoute: ActivatedRoute,
+     private snackBar: MatSnackBar,
+    public dialogRef : MatDialogRef<EditNoteComponent>,
+    @Inject(MAT_DIALOG_DATA) public data:any )
+  {
+    this.note = data;
+
+   }
+
+  ngOnInit(): void {
+  }
+  fullEdit: boolean = false;
+  pin: boolean = false;
+  archive: boolean = false;
+  title='';
+  description='';
+  isOpen = true;
   userColor: string = "white";
-  pinnedNotes: any = [];
-  unPinnedNotes: any = [];
+  noteReminder : string ="";
+  token: any;
   colors: any[] = [
     {
       "color": "#fff",
@@ -95,54 +114,7 @@ export class NotesComponent implements OnInit {
     }
   ];
 
-  constructor(
-    private noteService: NotesServiceService,
-    private snackBar: MatSnackBar,
-    public dialog: MatDialog
-  ) { }
 
-  ngOnInit(): void {
-    this.GetAllNotes();
-
-  }
-
-  GetAllNotes() {
-    this.noteService.GetAllUnPinNotes(this.token, "data").subscribe((response: any) => {
-      console.log(response);
-      let notesArr = response.data;
-        //notesArr.reverse();
-        console.log(notesArr);
-        this.unPinnedNotes= notesArr;
-        // this.notesArray=notesArr.filter((noteData:any)=>{
-        //   return noteData.trash != true && noteData.archieve != true;
-        //  });
-        //   this.notesArray=notesArr.filter((noteData:any)=>{
-        //   return noteData.isArchived === false ;
-        // }); 
-             
-      
-    console.log(this.unPinnedNotes);
-    
-    })
-    this.noteService.GetAllPinNotes(this.token, "data").subscribe((response: any) => {
-      console.log(response);
-      let notesArr = response.data;
-      //notesArr.reverse();
-      console.log(notesArr);
-      this.pinnedNotes= notesArr;
-      // this.notesArray=notesArr.filter((noteData:any)=>{
-      //   return noteData.trash != true && noteData.archieve != true;
-      //  });
-      //   this.notesArray=notesArr.filter((noteData:any)=>{
-      //   return noteData.isArchived === false ;
-      // }); 
-      
-    console.log(this.pinnedNotes);
-    
-    })
-  
-  }
-  
   UnPinIt(note : any) {
     note.pin = !note.pin;
     let updateObject = {
@@ -154,7 +126,7 @@ export class NotesComponent implements OnInit {
         console.log(response);
         if(response.success == true)
         {
-          this.GetAllNotes();
+          this.note.pin=updateObject.pin;
           this.snackBar.open(`${response.message}`, '', {
             duration: 4000,
             verticalPosition: 'bottom',
@@ -188,7 +160,7 @@ export class NotesComponent implements OnInit {
         console.log(response);
         if(response.success == true)
         {
-          this.GetAllNotes();
+          this.note.pin=updateObject.pin;
           this.snackBar.open(`${response.message}`, '', {
             duration: 4000,
             verticalPosition: 'bottom',
@@ -217,7 +189,7 @@ export class NotesComponent implements OnInit {
         console.log(response);
         if(response.success == true)
         {
-          this.GetAllNotes();
+          this.note.reminder=noteReminder;
           this.snackBar.open(`${response.message}`, '', {
             duration: 4000,
             verticalPosition: 'bottom',
@@ -247,7 +219,6 @@ export class NotesComponent implements OnInit {
         console.log(response);
         if(response.success == true)
         {
-          this.GetAllNotes();
           this.snackBar.open(`${response.message}`, '', {
             duration: 4000,
             verticalPosition: 'bottom',
@@ -280,7 +251,7 @@ export class NotesComponent implements OnInit {
         console.log(response);
         if(response.success == true)
         {
-          this.GetAllNotes();
+          this.note.color=color;
           this.snackBar.open(`${response.message}`, '', {
             duration: 4000,
             verticalPosition: 'bottom',
@@ -310,7 +281,6 @@ export class NotesComponent implements OnInit {
         console.log(response);
         if(response.success == true)
         {
-          this.GetAllNotes();
           this.snackBar.open(`${response.message}`, '', {
             duration: 4000,
             verticalPosition: 'bottom',
@@ -340,7 +310,6 @@ export class NotesComponent implements OnInit {
         console.log(response);
         if(response.success == true)
         {
-          this.GetAllNotes();
           this.snackBar.open(`${response.message}`, '', {
             duration: 4000,
             verticalPosition: 'bottom',
@@ -361,15 +330,13 @@ export class NotesComponent implements OnInit {
 
   }
 
-  /// Add Image 
-  onFileChanged(event: any,note:any)
-  {
-    this.noteService.AddImage(note.noteId,event.target.files[0]).subscribe((response: any) => 
-    {
-      console.log(response);
-      if(response.success == true)
+  UpdateNote(note:any){
+
+    let result: any = '';
+      this.noteService.UpdateNote(this.token,note).subscribe((response: any) => {
+        console.log(response);
+        if(response.success == true)
         {
-          this.GetAllNotes();
           this.snackBar.open(`${response.message}`, '', {
             duration: 4000,
             verticalPosition: 'bottom',
@@ -386,29 +353,10 @@ export class NotesComponent implements OnInit {
           horizontalPosition: 'left'
         });
       })
-  }
-  openDialog(note : any) {
 
-    const dialogConfig = new MatDialogConfig();
-
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    dialogConfig.data = note;
-
-    this.dialog.open(CollaboratorComponent, dialogConfig);
+    this.dialogRef.close();
+    
   }
 
-  EditUserNote( note: any)
-{
-   const dialogRef = this.dialog.open(EditNoteComponent, {
-    //  width : "500px",
-    //  height : "300px",
-     data : note
-
-     
-   });
-  //  dialogRef.afterclosed().s
-}
 
 }
-

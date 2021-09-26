@@ -3,7 +3,8 @@ import { NotesServiceService } from 'src/app/Services/NotesService/notes-service
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { CollaboratorComponent } from '../collaborator/collaborator.component';
+import { CollaboratorComponent } from '../components/collaborator/collaborator.component';
+import { EditNoteComponent } from '../components/edit-note/edit-note.component';
 
 @Component({
   selector: 'app-archive-notes',
@@ -13,6 +14,8 @@ import { CollaboratorComponent } from '../collaborator/collaborator.component';
 export class ArchiveNotesComponent implements OnInit {
   token: any;
   archiveNotes: any = [];
+  image:any;
+  file:any;
   userColor: string = "white";
   colors: any[] = [
     {
@@ -297,14 +300,55 @@ export class ArchiveNotesComponent implements OnInit {
 
   }
   
-  openDialog() {
+  openDialog(note : any) {
 
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
+    dialogConfig.data = note;
 
     this.dialog.open(CollaboratorComponent, dialogConfig);
   }
+
+  /// Add Image 
+  onFileChanged(event: any,note:any)
+  {
+    this.noteService.AddImage(note.noteId,event.target.files[0]).subscribe((response: any) => 
+    {
+      console.log(response);
+      if(response.success == true)
+        {
+          this.GetAllNotes();
+          this.snackBar.open(`${response.message}`, '', {
+            duration: 4000,
+            verticalPosition: 'bottom',
+            horizontalPosition: 'left'
+          });
+
+        }
+        
+      },(error: HttpErrorResponse) => {
+        console.log(error.error.message);
+        this.snackBar.open(`${error.error.message}`, '', {
+          duration: 4000,
+          verticalPosition: 'bottom',
+          horizontalPosition: 'left'
+        });
+      })
+  }
+  
+
+EditUserNote( note: any)
+{
+   const dialogRef = this.dialog.open(EditNoteComponent, {
+    //  width : "500px",
+    //  height : "500px",
+     data : note
+
+     
+   });
+  //  dialogRef.afterclosed().s
+}
 
 }

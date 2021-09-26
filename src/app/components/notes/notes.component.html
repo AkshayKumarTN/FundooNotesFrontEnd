@@ -8,8 +8,11 @@
         <div class="note-container" *ngFor="let note of pinnedNotes;">
             <mat-card class="card" [style.background-color]="note.color">
                 <div  class="mainBlock" [style.background-color]="note.color">
+                    <div *ngIf=" note.image != null" style="padding-bottom: 0px; margin-bottom: 0px;">
+                        <img src='{{note.image}}' alt='' width="300" height="200">
+                    </div>
                     <div fxLayout="row" fxLayoutAlign="space-between center">
-                        <strong class="title">{{note.title}}</strong>  
+                        <strong role="button" (click)="EditUserNote(note);" class="title">{{note.title}}</strong>  
                         <div class="pin-class">
                             <button class="buttons" *ngIf="note.pin" (click)="UnPinIt(note); " mat-icon-button>
                             <span matTooltip="pin note">
@@ -42,7 +45,7 @@
                             </mat-menu>
                             <mat-icon mat-list-icon class="material-icons-outlined"matTooltip="Remind me">notifications_none</mat-icon>
                         </button>
-                        <button mat-icon-button class="example-icon favorite-icon icon icon-glower" (click)="openDialog()">
+                        <button mat-icon-button class="example-icon favorite-icon icon icon-glower" (click)="openDialog(note)">
                             <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="collaborater">person_add</mat-icon>
                         </button>
                         <button mat-icon-button class="example-icon favorite-icon icon icon-glower" [matMenuTriggerFor]="colorMenu"  matTooltip="Change Color">
@@ -56,8 +59,11 @@
                             </mat-menu>
                             <mat-icon mat-list-icon class="material-icons-outlined">color_lens</mat-icon>
                         </button>
-                        <button mat-icon-button class="example-icon favorite-icon icon icon-glower">
-                            <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="Add Image">image</mat-icon>
+                        <button mat-icon-button class="example-icon favorite-icon icon icon-glower note-imde" glow-icon>                      
+                            <label for="image" mat-icon-button >
+                                <input type="file" name="image" accept="image/*" id="image" style="display:none;" (change)="onFileChanged($event,note)" />
+                                <mat-icon mat-list-icon class="material-icons-outlined " matTooltip="Add image">image</mat-icon>
+                            </label>
                         </button>
                         <button mat-icon-button class="example-icon favorite-icon icon icon-glower" (click)="ToggleAarchive(note);" glow-icon>
                             <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="Archive">archive</mat-icon>
@@ -85,6 +91,9 @@
         <div class="note-container" *ngFor="let note of unPinnedNotes;">
             <mat-card class="card" [style.background-color]="note.color">
                 <div  class="mainBlock" fxLayout="column"  [style.background-color]="note.color">
+                    <div *ngIf=" note.image != null" style="padding-bottom: 0px; margin-bottom: 0px;">
+                        <img src='{{note.image}}' alt='' width="300" height="200">
+                    </div>
                     <div fxLayout="row" fxLayoutAlign="space-between center">
                         <strong class="title">{{note.title}}</strong>  
                         <div class="pin-class">
@@ -119,7 +128,7 @@
                                     </mat-menu>
                                     <mat-icon mat-list-icon class="material-icons-outlined"matTooltip="Remind me">notifications_none</mat-icon>
                                 </button>
-                                <button mat-icon-button class="example-icon favorite-icon icon icon-glower" (click)="openDialog()">
+                                <button mat-icon-button class="example-icon favorite-icon icon icon-glower" (click)="openDialog(note)">
                                     <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="collaborater">person_add</mat-icon>
                                 </button>
                                 <button mat-icon-button class="example-icon favorite-icon icon icon-glower" [matMenuTriggerFor]="colorMenu"  matTooltip="Change Color">
@@ -133,8 +142,11 @@
                                     </mat-menu>
                                     <mat-icon mat-list-icon class="material-icons-outlined">color_lens</mat-icon>
                                 </button>
-                                <button mat-icon-button class="example-icon favorite-icon icon icon-glower">
-                                    <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="Add Image">image</mat-icon>
+                                <button mat-icon-button class="example-icon favorite-icon icon icon-glower note-imde" glow-icon>                      
+                                    <label for="image" mat-icon-button >
+                                        <input type="file" name="image" accept="image/*" id="image" style="display:none;" (change)="onFileChanged($event,note)" />
+                                        <mat-icon mat-list-icon class="material-icons-outlined " matTooltip="Add image">image</mat-icon>
+                                    </label>
                                 </button>
                                 <button mat-icon-button class="example-icon favorite-icon icon icon-glower" (click)="ToggleAarchive(note);" glow-icon>
                                     <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="Archive">archive</mat-icon>

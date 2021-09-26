@@ -4,6 +4,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CollaboratorComponent } from '../collaborator/collaborator.component';
+import { EditNoteComponent } from '../edit-note/edit-note.component';
+
 
 @Component({
   selector: 'app-remainder-notes',
@@ -253,14 +255,53 @@ export class RemainderNotesComponent implements OnInit {
 
   }
 
-  openDialog() {
+  /// Add Image 
+  onFileChanged(event: any,note:any)
+  {
+    this.noteService.AddImage(note.noteId,event.target.files[0]).subscribe((response: any) => 
+    {
+      console.log(response);
+      if(response.success == true)
+        {
+          this.GetAllNotes();
+          this.snackBar.open(`${response.message}`, '', {
+            duration: 4000,
+            verticalPosition: 'bottom',
+            horizontalPosition: 'left'
+          });
+
+        }
+        
+      },(error: HttpErrorResponse) => {
+        console.log(error.error.message);
+        this.snackBar.open(`${error.error.message}`, '', {
+          duration: 4000,
+          verticalPosition: 'bottom',
+          horizontalPosition: 'left'
+        });
+      })
+  }
+
+  openDialog(note : any) {
 
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
+    dialogConfig.data = note;
 
     this.dialog.open(CollaboratorComponent, dialogConfig);
   }
+  EditUserNote( note: any)
+{
+   const dialogRef = this.dialog.open(EditNoteComponent, {
+    //  width : "500px",
+    //  height : "300px",
+     data : note
+
+     
+   });
+  //  dialogRef.afterclosed().s
+}
 
 }

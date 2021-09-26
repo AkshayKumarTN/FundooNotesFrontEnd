@@ -1,0 +1,81 @@
+<mat-card class="card" [style.background-color]="note.color">
+    <div [style.background-color]="note.color" class="main-dialog" fxLayout="column" fxLayoutAlign="space-between">
+        <div fxLayout="row" fxLayoutAlign="space-between center" style="padding-bottom: 20px;"> 
+            <input class="title-in font" matInput placeholder="Title" id="title" [(ngModel)]="note.title" [style.background-color]="note.color">
+            <div >
+                <label  *ngIf="note.pin" (click)="UnPinIt(note);" >
+                    <span matTooltip="pin note">
+                        <img class=" icon-glower" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICA8cGF0aCBmaWxsPSJub25lIiBkPSJNMCAwaDI0djI0SDB6Ii8+CiAgPHBhdGggZmlsbD0iIzAwMCIgZD0iTTE3IDRhMiAyIDAgMCAwLTItMkg5Yy0xLjEgMC0yIC45LTIgMnY3bC0yIDN2Mmg2djVsMSAxIDEtMXYtNWg2di0ybC0yLTNWNHoiLz4KPC9zdmc+Cg==">
+                    </span>
+                </label> 
+                <label  *ngIf="!note.pin" (click)="PinIt(note);">
+                    <span matTooltip="pin note">
+                        <img class="icon-glower" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICA8cGF0aCBmaWxsPSJub25lIiBkPSJNMCAwaDI0djI0SDB6Ii8+CiAgPHBhdGggZmlsbD0iIzAwMCIgZD0iTTE3IDR2N2wyIDN2MmgtNnY1bC0xIDEtMS0xdi01SDV2LTJsMi0zVjRjMC0xLjEuOS0yIDItMmg2YzEuMTEgMCAyIC44OSAyIDJ6TTkgNHY3Ljc1TDcuNSAxNGg5TDE1IDExLjc1VjRIOXoiLz4KPC9zdmc+Cg==">
+                    </span>
+                </label>
+            </div>    
+
+        </div>
+        <div fxLayout="column" fxLayoutAlign="space-between" fxLayoutGap="50px">
+            <div>
+                <textarea contenteditable="true" aria-multiline="true" role="textbox"
+                class="title-in font" tabindex="0" spellcheck="true" id="description" [(ngModel)]="note.description" [style.background-color]="note.color"></textarea>
+                <div *ngIf="note.reminder!=null" style=" padding-top: 20px;">
+                    <div *ngIf="note.reminder!=null" class="reminderLabel" >
+                        <mat-icon mat-list-icon class="material-icons-outlined">watch_later</mat-icon>
+                        <p>{{note.reminder}}</p>
+                        <mat-icon role="button" mat-list-icon class="material-icons-outlined cursor icon-glower-cursor"(click)="RemoveReminder(note)" mat-icon-button>close</mat-icon>
+                    </div>
+                </div>
+                <div *ngIf="note.reminder==null" style="padding-bottom: 45px;"></div>
+            </div>
+            
+            <div fxLayoutAlign=" space-between end" fxLayoutGap="44px">
+                <div fxLayout="row" fxLayoutAlign="space-around end" fxLayoutGap="10px"> 
+
+                    <button mat-icon-button class="example-icon favorite-icon icon-glower" [matMenuTriggerFor]="Remainder">
+                        <mat-menu #Remainder="matMenu" class="r-option">
+                            <p class="r-par">Remainder:</p>
+                            <button mat-menu-item class="remainder-but" fxLayout="row" fxLayoutGap="20px" *ngFor="let reminder of reminders;" (click)="AddReminder(note,reminder)">
+                            <p>{{reminder.Text}}</p>
+                            <p>{{reminder.Time}}</p>
+                            </button>
+                        </mat-menu>
+                        <mat-icon mat-list-icon class="material-icons-outlined"matTooltip="Remind me">notifications_none</mat-icon>
+                    </button>
+                    <button mat-icon-button class="example-icon favorite-icon  icon-glower">
+                        <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="collaborater">person_add</mat-icon>
+                    </button>
+                    <button mat-icon-button class="example-icon favorite-icon  icon-glower" [matMenuTriggerFor]="colorMenu"  matTooltip="Change Color">
+                        <mat-menu #colorMenu="matMenu" yPosition="above">
+                            <div class="get_note_color_menu">
+                                <span class="colors" (click)="ChangeColor(colors[i].color,note)"  [style.background-color]="colors[i].color"
+                                        matTooltip="{{colors[i].toolTip}}" *ngFor="let color of colors;let i=index">
+                                        <mat-icon mat-list-icon *ngIf="colors[i].icon">done</mat-icon>
+                                </span>
+                            </div>
+                        </mat-menu>
+                        <mat-icon mat-list-icon class="material-icons-outlined">color_lens</mat-icon>
+                    </button>
+                    <button mat-icon-button class="example-icon favorite-icon icon-glower">
+                        <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="Add Image">image</mat-icon>
+                    </button>
+                    <button mat-icon-button class="example-icon favorite-icon icon-glower" (click)="ToggleAarchive(note);" glow-icon>
+                        <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="Archive">archive</mat-icon>
+                    </button>
+                    <button mat-icon-button class="example-icon favorite-icon  icon-glower" [matMenuTriggerFor]="moreMenu">
+                        <mat-menu #moreMenu="matMenu">                                
+                            <button (click)="DeleteNote(note);" mat-menu-item>Delete note</button>
+                            <button mat-menu-item>Add label</button>
+                        </mat-menu>
+                        <mat-icon mat-list-icon class="material-icons-outlined" matTooltip="More">more_vert</mat-icon>
+                    </button>
+                </div> 
+                <div  fxLayoutAlign="end end">
+                    <label role="button" class="close-note" (click)="UpdateNote(note)">Close</label>
+                </div>                
+            </div>
+            
+        </div>
+    </div>
+</mat-card>

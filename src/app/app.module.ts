@@ -11,10 +11,11 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MaterialModule } from './material/material.module';
 import { TakeNotesComponent } from './components/take-notes/take-notes.component';
 import { NotesComponent } from './components/notes/notes.component';
-import { ArchiveNotesComponent } from '../app/components/archive-notes/archive-notes.component';
+import { ArchiveNotesComponent } from './archive-notes/archive-notes.component';
 import { TrashNotesComponent } from './components/trash-notes/trash-notes.component';
 import { RemainderNotesComponent } from './components/remainder-notes/remainder-notes.component';
 import { CollaboratorComponent } from './components/collaborator/collaborator.component';
+import { EditNoteComponent } from './components/edit-note/edit-note.component';
 
 
 
@@ -34,6 +35,7 @@ import { CollaboratorComponent } from './components/collaborator/collaborator.co
     TrashNotesComponent,
     RemainderNotesComponent,
     CollaboratorComponent,
+    EditNoteComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

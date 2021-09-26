@@ -158,6 +158,47 @@ export class NotesServiceService {
     return this.httpService.put(`${environment.baseUrl}/api/RestoreNote?noteId=${data.noteId}`,null,true,this.header);
   }
 
+  AddImage(noteId:any,file:any)
+  { 
+    console.log(file);
+    var data = new FormData();
+    data.append("image",file);
+    console.log(data);
+      this.getToken();
+      return this.httpService.put(`${environment.baseUrl}/addImage?noteId=${noteId}`,data,true,this.header); 
+      
+  }
+
+  /// UpdateNote
+
+  UpdateNote(token: any,note: any) {
+    this.getToken()
+    console.log(this.header);
+    return this.httpService.put(`${environment.baseUrl}/api/UpdateNote`,note,true,this.header);
+  }
+
+  /// Collaborator
+
+  GetAllCollaborator(token: any,data: any) {
+    this.getToken()
+    console.log(this.header);
+    return this.httpService.get(`${environment.baseUrl}/api/Collaborator?noteId=${data}`,null,true,this.header);
+  }
+
+
+  AddCollaborator(token: any,collaboraters: any) {
+    this.getToken()
+    console.log(collaboraters.receiverEmail);
+    console.log(this.header);
+    return this.httpService.post(`${environment.baseUrl}/api/Collaborator`,collaboraters,true,this.header);
+  }
+
+  RemoveCollaborator(token: any,data: any) {
+    this.getToken()
+    console.log(this.header);
+    return this.httpService.delete(`${environment.baseUrl}/api/Collaborator?CollaboratorId=${data}`,null,true,this.header);
+  }
+
 
 
 

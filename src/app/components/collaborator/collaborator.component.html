@@ -1,22 +1,44 @@
 <div class="mainCollab" >
     <h2 mat-dialog-title>Collaborator</h2>
     <mat-divider></mat-divider>
-    <mat-dialog-content [formGroup]="AddCollaboratorForm">
+    <mat-dialog-content >
         <div class="collaborators">
             <div class="user">
                 <img src="../../../assets/emplpyee.png" class="profilePic">
                 <div class="UserName">
-                    <h4 style="height:6px">{{UserFirstName}} {{UserLastName}}
+                    <h4 style="height:6px">{{FirstName}} {{LastName}}
                         <span style="font-style: italic;font-weight: lighter;">(Owner)</span>
                     </h4>
-                    <p>{{UserEmail}}</p>
+                    <p>{{Email}}</p>
                 </div>
             </div>
-            <div class="user">
+            <div class="user" *ngFor="let collaborator of noteCollaborator;">
+                <img src="../../../assets/emplpyee1.png" class="profilePic">
+                <div class="UserName">
+                    <h4 style="height:6px" >
+                        <div fxLayout="row" fxLayoutAlign="space-between center" >
+                        <div> FirstName LastName</div>
+                        <div>
+                        <i class="material-icons icons" matSuffix style="padding-left: 310px; cursor: pointer;" (click)="RemoveCollaborator(collaborator)">clear</i>
+                        </div>
+                        </div>
+                    </h4>
+                    <p>{{collaborator.receiverEmail}}</p>
+                </div>
+            </div>
+            <div class="user" *ngFor="let email of emails" style="padding-bottom: 10px;">
+                <span class="add">
+                    <mat-icon class="addperson">person</mat-icon>
+                </span>
+                <input placeholder="Person or email to share with" type="email" class="person" [value]="email" readonly>
+                <i class="material-icons icons" matSuffix style="padding-left: 130px; cursor: pointer;" (click)="RemoveCollab(email)">clear</i>
+            </div>
+            <div class="user" >
                 <span class="add">
                     <mat-icon class="addperson">person_add</mat-icon>
                 </span>
-                <input placeholder="Person or email to share with" formControlName="email" class="person">
+                <input placeholder="Person or email to share with"  class="person" [(ngModel)]="searchField">
+                <i class="material-icons icons" matSuffix (click)="clearSearchField()" *ngIf="searchField" style="padding-left: 130px; cursor: pointer;">check</i>
             </div>
         </div>
 
@@ -26,7 +48,7 @@
     <mat-dialog-actions >
         <div class="action_buttons">
             <button mat-button style="color: #454545;" (click)="close()">Close</button>
-            <button mat-button style="color: #454545;">Save</button>
+            <button mat-button style="color: #454545;"(click)="save()">Save</button>
         </div>
     </mat-dialog-actions>
 </div> 
