@@ -53,10 +53,19 @@ export class DashboardComponent implements OnInit {
   
   }
 
+  GetLabel(label : any)
+  {
+    localStorage.setItem('GetLable',JSON.stringify(label));
+    this.routers.navigate(['/dashboard/lable']);
+
+
+  }
+
   logout() {
     
     localStorage.removeItem("FundooNotes");
     this.routers.navigateByUrl('login');
   }
+
 
 }

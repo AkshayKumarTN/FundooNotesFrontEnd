@@ -201,6 +201,12 @@ export class NotesServiceService {
 
   /// Label
 
+  GetAllLabelNotes(token: any,data: any) {
+    this.getToken()
+    console.log(this.header);
+    return this.httpService.get(`${environment.baseUrl}/api/NotesByLabelId?lableId=${data.labelId}`,null,true,this.header);
+  }
+
   AddLabelToNote(token: any,data: any) {
     console.log("AddLabel");
     console.log(data);
@@ -209,6 +215,7 @@ export class NotesServiceService {
     console.log(this.header);
     return this.httpService.post(`${environment.baseUrl}/api/Label`,data,true,this.header);
   }
+
 
 
 

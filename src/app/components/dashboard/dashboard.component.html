@@ -90,7 +90,7 @@
                     </button>
                     <p class="navName " *ngIf="isExpandable">Reminder</p>
                 </div>
-                <div class="navlist" (mouseover)="isExpandable=true" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" mat-list-item *ngFor="let label of labels">
+                <div class="navlist" (mouseover)="isExpandable=true" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px" mat-list-item *ngFor="let label of labels" (click)="GetLabel(label)">
                     <button class="navBtn btnPosition" mat-icon-button (mouseover)="isExpandable=true">
                         <mat-icon mat-list-icon class="sidenavLogo">label_outline</mat-icon>
                     </button>

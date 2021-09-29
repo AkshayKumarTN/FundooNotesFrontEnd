@@ -9,6 +9,7 @@ import { NotesComponent } from './components/notes/notes.component';
 import { ArchiveNotesComponent } from './archive-notes/archive-notes.component';
 import { RemainderNotesComponent } from './components/remainder-notes/remainder-notes.component';
 import { TrashNotesComponent } from './components/trash-notes/trash-notes.component';
+import { LabelComponent } from './components/label/label.component';
 
 var data =localStorage.getItem('ForgotPassword');
 var token=JSON.parse(data!).Token;
@@ -25,7 +26,8 @@ const routes: Routes = [
     { path: 'notes', component: NotesComponent },
     {path: 'archive',component: ArchiveNotesComponent},
     { path: 'remainder', component: RemainderNotesComponent },
-    {path: 'trash',component: TrashNotesComponent}
+    {path: 'trash',component: TrashNotesComponent},
+    { path: 'lable',component: LabelComponent}
   ]
 }
 ];

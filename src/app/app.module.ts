@@ -16,6 +16,7 @@ import { TrashNotesComponent } from './components/trash-notes/trash-notes.compon
 import { RemainderNotesComponent } from './components/remainder-notes/remainder-notes.component';
 import { CollaboratorComponent } from './components/collaborator/collaborator.component';
 import { EditNoteComponent } from './components/edit-note/edit-note.component';
+import { LabelComponent } from './components/label/label.component';
 
 
 
@@ -36,6 +37,7 @@ import { EditNoteComponent } from './components/edit-note/edit-note.component';
     RemainderNotesComponent,
     CollaboratorComponent,
     EditNoteComponent,
+    LabelComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
