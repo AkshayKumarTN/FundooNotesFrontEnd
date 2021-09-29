@@ -168,6 +168,18 @@
   padding-top: 5px;
 }
 
+.AddLabel{
+  border: unset;
+  font-size: 13px;
+  color: #3c4043;
+  background-color: transparent;
+}
+
+.AddLabel:focus { 
+outline: none !important;
+border-color: white;
+} 
+
 .colors
 {
     height: 25px;

@@ -199,6 +199,17 @@ export class NotesServiceService {
     return this.httpService.delete(`${environment.baseUrl}/api/Collaborator?CollaboratorId=${data}`,null,true,this.header);
   }
 
+  /// Label
+
+  AddLabelToNote(token: any,data: any) {
+    console.log("AddLabel");
+    console.log(data);
+
+    this.getToken()
+    console.log(this.header);
+    return this.httpService.post(`${environment.baseUrl}/api/Label`,data,true,this.header);
+  }
+
 
 
 

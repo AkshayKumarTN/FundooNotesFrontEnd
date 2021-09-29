@@ -16,6 +16,7 @@ import { EditNoteComponent } from '../edit-note/edit-note.component';
 export class NotesComponent implements OnInit {
 
   token: any;
+  labelName = "";
   userColor: string = "white";
   pinnedNotes: any = [];
   unPinnedNotes: any = [];
@@ -408,6 +409,38 @@ export class NotesComponent implements OnInit {
      
    });
   //  dialogRef.afterclosed().s
+}
+
+addLabelToNote(data:any){
+  console.log("Note");
+console.log(data);
+  let params = {
+
+    NoteId: data.noteId,
+    UserId : data.userId,
+    LabelName : this.labelName
+  };      
+  this.noteService.AddLabelToNote(this.token,params).subscribe((response:any)=>{
+    console.log(response);
+  if(response.status == true)
+    {
+      this.GetAllNotes();
+      this.snackBar.open(`${response.message}`, '', {
+        duration: 4000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'left'
+      });
+
+    }
+    
+  },(error: HttpErrorResponse) => {
+    console.log(error.error.message);
+    this.snackBar.open(`${error.error.message}`, '', {
+      duration: 4000,
+      verticalPosition: 'bottom',
+      horizontalPosition: 'left'
+    });
+  })
 }
 
 }

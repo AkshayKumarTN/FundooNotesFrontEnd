@@ -13,6 +13,7 @@ import { EditNoteComponent } from '../components/edit-note/edit-note.component';
 })
 export class ArchiveNotesComponent implements OnInit {
   token: any;
+  labelName = "";
   archiveNotes: any = [];
   image:any;
   file:any;
@@ -339,16 +340,48 @@ export class ArchiveNotesComponent implements OnInit {
   }
   
 
-EditUserNote( note: any)
-{
-   const dialogRef = this.dialog.open(EditNoteComponent, {
-    //  width : "500px",
-    //  height : "500px",
-     data : note
+    EditUserNote( note: any)
+    {
+      const dialogRef = this.dialog.open(EditNoteComponent, {
+        //  width : "500px",
+        //  height : "500px",
+        data : note
 
-     
-   });
-  //  dialogRef.afterclosed().s
-}
+        
+      });
+      //  dialogRef.afterclosed().s
+    }
+
+    addLabelToNote(data:any){
+      console.log("Note");
+    console.log(data);
+      let params = {
+
+        NoteId: data.noteId,
+        UserId : data.userId,
+        LabelName : this.labelName
+      };      
+      this.noteService.AddLabelToNote(this.token,params).subscribe((response:any)=>{
+        console.log(response);
+      if(response.status == true)
+        {
+          this.GetAllNotes();
+          this.snackBar.open(`${response.message}`, '', {
+            duration: 4000,
+            verticalPosition: 'bottom',
+            horizontalPosition: 'left'
+          });
+
+        }
+        
+      },(error: HttpErrorResponse) => {
+        console.log(error.error.message);
+        this.snackBar.open(`${error.error.message}`, '', {
+          duration: 4000,
+          verticalPosition: 'bottom',
+          horizontalPosition: 'left'
+        });
+      })
+    }
 
 }

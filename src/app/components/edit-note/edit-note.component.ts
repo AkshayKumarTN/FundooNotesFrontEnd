@@ -33,6 +33,7 @@ export class EditNoteComponent implements OnInit {
   pin: boolean = false;
   archive: boolean = false;
   title='';
+  labelName = "";
   description='';
   isOpen = true;
   userColor: string = "white";
@@ -356,6 +357,37 @@ export class EditNoteComponent implements OnInit {
 
     this.dialogRef.close();
     
+  }
+
+  addLabelToNote(data:any){
+    console.log("Note");
+  console.log(data);
+    let params = {
+
+      NoteId: data.noteId,
+      UserId : data.userId,
+      LabelName : this.labelName
+    };      
+    this.noteService.AddLabelToNote(this.token,params).subscribe((response:any)=>{
+      console.log(response);
+    if(response.status == true)
+      {
+        this.snackBar.open(`${response.message}`, '', {
+          duration: 4000,
+          verticalPosition: 'bottom',
+          horizontalPosition: 'left'
+        });
+
+      }
+      
+    },(error: HttpErrorResponse) => {
+      console.log(error.error.message);
+      this.snackBar.open(`${error.error.message}`, '', {
+        duration: 4000,
+        verticalPosition: 'bottom',
+        horizontalPosition: 'left'
+      });
+    })
   }
 
 
